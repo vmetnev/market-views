@@ -709,28 +709,48 @@
 
     .view-tabs {
       display: flex;
-      align-items: stretch;
+      align-self: stretch;
+      align-items: center;
       flex-shrink: 0;
-      height: 3rem;
-      gap: 0.25rem;
+      gap: 0.35rem;
+      padding: 0.4rem 0;
     }
     .view-tab {
       appearance: none;
       border: 0;
-      border-bottom: 2px solid transparent;
-      background: transparent;
-      color: var(--muted-foreground);
+      height: 100%;
+      border-radius: 0.35rem;
+      background: color-mix(in oklch, var(--primary) 30%, white);
+      color: var(--primary);
       font: inherit;
       font-size: 0.875rem;
-      padding: 0 0.75rem;
+      font-weight: 500;
+      padding: 0 0.9rem;
       cursor: pointer;
       white-space: nowrap;
+      transition: background-color 220ms ease, color 220ms ease;
     }
-    .view-tab:hover { color: var(--foreground); }
-    .view-tab.active {
-      border-bottom-color: var(--primary);
-      color: var(--foreground);
-      font-weight: 500;
+    .view-tab:hover {
+      background: color-mix(in oklch, var(--primary) 42%, white);
+    }
+    .view-tab.active,
+    .view-tab.active:hover {
+      background: var(--primary);
+      color: white;
+    }
+    #market-summary .theme-list {
+      margin: 0.35rem 0 0.85rem;
+      padding-left: 1.15rem;
+    }
+    #market-summary .theme-list li + li {
+      margin-top: 0.35rem;
+    }
+    #market-macro .force h3 {
+      margin-bottom: 1rem;
+    }
+    .part-gap {
+      display: block;
+      height: 1.25rem;
     }
     main[hidden], nav[hidden] { display: none !important; }
 
@@ -811,7 +831,18 @@
 
  <section class="section" id="market-summary">
  <p class="section-label">Executive summary</p>
- <div class="card prose"><p>Investment stance: selectively constructive on U.S. equities over the next 12 months, but favor identifiable revenue conversion and cash generation over broad market multiple expansion. Reported growth remains strong: BEA&#x27;s October 29 advance estimate showed Q3 real GDP growth of 3.4% annualized. However, September real consumption was essentially flat, while core PCE inflation remained 3.1% year over year. The Federal Reserve held its policy range at 3.75%–4.00% on October 28, with two dissents favoring an increase. This combination supports selective investment-led growth rather than an indiscriminate easing-cycle trade. Ranked themes: 1) electrical infrastructure order conversion; 2) missile-defense production; 3) procedure-linked medical technology; 4) proven enterprise AI monetization; 5) domestic oil production as an inflation hedge; 6) underweight vulnerable discretionary consumption; 7) underweight refinancing-dependent business models. Rankings reflect evidence quality, prospective earnings transmission and diversification—not verified security-level cheapness. All implementation decisions remain conditional on valuation screening. Company disclosures below are industry evidence, not individual security recommendations. Research uses information published by the requested date, but does not represent a verified October 30 market close. No scenario probabilities or portfolio weights are assigned.</p></div>
+ <div class="card prose"><p><strong>Investment stance:</strong> selectively constructive on U.S. equities over the next 12 months, but favor identifiable revenue conversion and cash generation over broad market multiple expansion. Reported growth remains strong: BEA&#x27;s October 29 advance estimate showed Q3 real GDP growth of 3.4% annualized. However, September real consumption was essentially flat, while core PCE inflation remained 3.1% year over year. The Federal Reserve held its policy range at 3.75%–4.00% on October 28, with two dissents favoring an increase. This combination supports selective investment-led growth rather than an indiscriminate easing-cycle trade.</p>
+<p>Ranked themes:</p>
+<ul class="theme-list">
+<li>electrical infrastructure order conversion</li>
+<li>missile-defense production</li>
+<li>procedure-linked medical technology</li>
+<li>proven enterprise AI monetization</li>
+<li>domestic oil production as an inflation hedge</li>
+<li>underweight vulnerable discretionary consumption</li>
+<li>underweight refinancing-dependent business models</li>
+</ul>
+<p>Rankings reflect evidence quality, prospective earnings transmission and diversification—not verified security-level cheapness. All implementation decisions remain conditional on valuation screening. Company disclosures below are industry evidence, not individual security recommendations. Research uses information published by the requested date, but does not represent a verified October 30 market close.</p></div>
  </section>
 
  <section class="section" id="market-macro">
@@ -822,7 +853,7 @@
  <div class="force-index">1</div>
  <div>
  <h3>Strong aggregate growth, but a less reassuring consumption exit rate.</h3>
- <div class="prose"><p><span class="tag">REPORTED</span> BEA&#x27;s October 29, 2026 GDP summary showed Q3 real GDP rising 3.4% annualized versus 2.2% in Q2, with investment, consumption and government spending contributing positively. Its September income report, also published October 29, showed real PCE growth below 0.1% month over month, real disposable income down 0.3%, and a 3.8% saving rate. <span class="tag">INTERPRETATION</span> investment-related suppliers have stronger support than businesses requiring sustained acceleration in household purchasing power; one weak monthly observation does not establish a recession. Observation periods: Q3 2026 and September 2026. The GDP summary was verified; the full advance-release page was not accessible.</p></div>
+ <div class="prose"><p><span class="tag">REPORTED</span> BEA&#x27;s October 29, 2026 GDP summary showed Q3 real GDP rising 3.4% annualized versus 2.2% in Q2, with investment, consumption and government spending contributing positively. Its September income report, also published October 29, showed real PCE growth below 0.1% month over month, real disposable income down 0.3%, and a 3.8% saving rate.<span class="part-gap"></span><span class="tag">INTERPRETATION</span> investment-related suppliers have stronger support than businesses requiring sustained acceleration in household purchasing power; one weak monthly observation does not establish a recession. Observation periods: Q3 2026 and September 2026. The GDP summary was verified; the full advance-release page was not accessible.</p></div>
  </div>
 </article>
 
@@ -831,7 +862,7 @@
  <div class="force-index">2</div>
  <div>
  <h3>Inflation limits monetary accommodation.</h3>
- <div class="prose"><p><span class="tag">REPORTED</span> September CPI rose 0.6% monthly and 3.7% annually; core CPI rose 0.3% monthly and 2.6% annually. Gasoline accounted for more than half the monthly headline increase. September PCE inflation was 3.6% annually, with core PCE at 3.1%. The October 28 FOMC held 3.75%–4.00%, following September&#x27;s quarter-point increase; two October dissenters preferred another increase. <span class="tag">INTERPRETATION</span> do not build the portfolio around imminent cuts. Elevated discount rates penalize distant cash flows, while fuel inflation pressures consumer purchasing power and transport margins. published October 14; the BEA income release above, published October 29; published October 28; published September 16.</p></div>
+ <div class="prose"><p><span class="tag">REPORTED</span> September CPI rose 0.6% monthly and 3.7% annually; core CPI rose 0.3% monthly and 2.6% annually. Gasoline accounted for more than half the monthly headline increase. September PCE inflation was 3.6% annually, with core PCE at 3.1%. The October 28 FOMC held 3.75%–4.00%, following September&#x27;s quarter-point increase; two October dissenters preferred another increase.<span class="part-gap"></span><span class="tag">INTERPRETATION</span> do not build the portfolio around imminent cuts. Elevated discount rates penalize distant cash flows, while fuel inflation pressures consumer purchasing power and transport margins. published October 14; the BEA income release above, published October 29; published October 28; published September 16.</p></div>
  </div>
 </article>
 
@@ -840,7 +871,7 @@
  <div class="force-index">3</div>
  <div>
  <h3>Labor and credit conditions are uneven, not uniformly contractionary.</h3>
- <div class="prose"><p><span class="tag">REPORTED</span> the October 2 employment release showed September payroll growth of 29,000 and unemployment of 4.2%. September manufacturing PMI was 54.5, with new orders at 55.3 and prices at 77.9. The July SLOOS, updated August 3 and generally covering Q2, reported unchanged C&amp;I standards, stronger large/middle-market loan demand, tighter credit-card standards and weaker mortgage demand. <span class="tag">INTERPRETATION</span> capital spending can remain supportive despite modest hiring, but financing access differs materially between corporate and household borrowers. SLOOS is lagged evidence, not a current-quarter credit assessment. ISM observation period is September 2026; the exact publication date was not independently verified.</p></div>
+ <div class="prose"><p><span class="tag">REPORTED</span> the October 2 employment release showed September payroll growth of 29,000 and unemployment of 4.2%. September manufacturing PMI was 54.5, with new orders at 55.3 and prices at 77.9. The July SLOOS, updated August 3 and generally covering Q2, reported unchanged C&amp;I standards, stronger large/middle-market loan demand, tighter credit-card standards and weaker mortgage demand.<span class="part-gap"></span><span class="tag">INTERPRETATION</span> capital spending can remain supportive despite modest hiring, but financing access differs materially between corporate and household borrowers. SLOOS is lagged evidence, not a current-quarter credit assessment. ISM observation period is September 2026; the exact publication date was not independently verified.</p></div>
  </div>
 </article>
 
@@ -849,7 +880,7 @@
  <div class="force-index">4</div>
  <div>
  <h3>Energy security is an earnings and inflation variable.</h3>
- <div class="prose"><p><span class="tag">REPORTED/ESTIMATED</span> EIA&#x27;s October 6 outlook reported September Brent averaging $114/barrel following Middle Eastern supply disruptions. <span class="tag">EIA FORECAST</span> $105/barrel in Q4 2026, with constrained regional exports. These are monthly observations and forecasts, not October 30 spot prices. <span class="tag">INTERPRETATION</span> domestic low-cost oil production can offset some portfolio exposure to an adverse supply shock; normalization would reverse that benefit. publication October 6, 2026; observation September 2026 and forecast Q4 2026.</p></div>
+ <div class="prose"><p><span class="tag">REPORTED/ESTIMATED</span> EIA&#x27;s October 6 outlook reported September Brent averaging $114/barrel following Middle Eastern supply disruptions. <span class="tag">EIA FORECAST</span> $105/barrel in Q4 2026, with constrained regional exports. These are monthly observations and forecasts, not October 30 spot prices.<span class="part-gap"></span><span class="tag">INTERPRETATION</span> domestic low-cost oil production can offset some portfolio exposure to an adverse supply shock; normalization would reverse that benefit. publication October 6, 2026; observation September 2026 and forecast Q4 2026.</p></div>
  </div>
 </article>
 
@@ -858,7 +889,7 @@
  <div class="force-index">5</div>
  <div>
  <h3>Fiscal financing can keep long-duration capital expensive.</h3>
- <div class="prose"><p><span class="tag">REPORTED</span> the Joint Economic Committee&#x27;s October 22 fiscal update reported a $1.992 trillion FY2026 deficit, versus $1.775 trillion in FY2025. Treasury&#x27;s October 29 curve showed a 4.98% ten-year yield. <span class="tag">INTERPRETATION</span> substantial financing requirements create a potential term-premium headwind, although this evidence does not establish that deficits caused the observed yield level. Observation periods: fiscal year ended September 30 and October 29, 2026. The fiscal figure is attributed to the congressional release; the underlying September Treasury statement could not be retrieved.</p></div>
+ <div class="prose"><p><span class="tag">REPORTED</span> the Joint Economic Committee&#x27;s October 22 fiscal update reported a $1.992 trillion FY2026 deficit, versus $1.775 trillion in FY2025. Treasury&#x27;s October 29 curve showed a 4.98% ten-year yield.<span class="part-gap"></span><span class="tag">INTERPRETATION</span> substantial financing requirements create a potential term-premium headwind, although this evidence does not establish that deficits caused the observed yield level. Observation periods: fiscal year ended September 30 and October 29, 2026. The fiscal figure is attributed to the congressional release; the underlying September Treasury statement could not be retrieved.</p></div>
  </div>
 </article>
 </div>
