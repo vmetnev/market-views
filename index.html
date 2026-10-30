@@ -1,0 +1,2801 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Market views and AI portfolio · 30 October 2026</title>
+  <style>
+:root {
+      --background: oklch(0.993 0.006 82);
+      --foreground: oklch(0.31 0.018 50);
+      --card: oklch(0.999 0.003 90);
+      --card-foreground: oklch(0.31 0.018 50);
+      --primary: oklch(0.40 0.055 250);
+      --primary-foreground: oklch(0.99 0.004 90);
+      --secondary: oklch(0.974 0.01 82);
+      --secondary-foreground: oklch(0.36 0.02 50);
+      --muted: oklch(0.974 0.01 82);
+      --muted-foreground: oklch(0.51 0.015 55);
+      --metadata: oklch(0.64 0.012 60);
+      --accent: oklch(0.969 0.014 78);
+      --accent-foreground: oklch(0.34 0.025 50);
+      --destructive: oklch(0.55 0.14 25);
+      --positive: oklch(0.48 0.09 155);
+      --border: oklch(0.915 0.012 78);
+      --sidebar: oklch(0.987 0.008 82);
+      --sidebar-foreground: oklch(0.31 0.018 50);
+      --sidebar-primary: oklch(0.40 0.055 250);
+      --sidebar-primary-foreground: oklch(0.99 0.004 90);
+      --radius: 0.5rem;
+      --font-sans: ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+    }
+
+    * { box-sizing: border-box; }
+    html { font-family: var(--font-sans); scroll-behavior: smooth; }
+    body {
+      margin: 0;
+      background: var(--background);
+      color: var(--foreground);
+      line-height: 1.375;
+      -webkit-font-smoothing: antialiased;
+    }
+    a { color: var(--primary); text-decoration-thickness: 1px; text-underline-offset: 3px; }
+    .prose a {
+      overflow-wrap: anywhere;
+      text-decoration-color: color-mix(in oklch, var(--primary) 40%, transparent);
+    }
+    .prose a:hover { text-decoration-color: var(--primary); }
+
+    .site-header {
+      position: sticky;
+      top: 0;
+      z-index: 30;
+      display: flex;
+      align-items: center;
+      gap: 1.5rem;
+      height: 3rem;
+      padding: 0 1rem;
+      border-bottom: 1px solid var(--border);
+      background: var(--sidebar);
+    }
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      color: var(--sidebar-foreground);
+      text-decoration: none;
+      font-size: 0.875rem;
+      font-weight: 500;
+      white-space: nowrap;
+    }
+    .mark {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 1.75rem;
+      height: 1.75rem;
+      border-radius: calc(var(--radius) * 0.6);
+      background: var(--sidebar-primary);
+      color: var(--sidebar-primary-foreground);
+    }
+    .mark svg { width: 0.875rem; height: 0.875rem; }
+    .site-nav {
+      display: flex;
+      min-width: 0;
+      gap: 0.25rem;
+      overflow-x: auto;
+    }
+    .site-nav a {
+      display: inline-flex;
+      align-items: center;
+      height: 3rem;
+      padding: 0 0.75rem;
+      border-bottom: 2px solid transparent;
+      color: var(--muted-foreground);
+      font-size: 0.875rem;
+      text-decoration: none;
+      white-space: nowrap;
+    }
+    .site-nav a:hover { color: var(--foreground); }
+    .site-nav a.active {
+      border-bottom-color: var(--primary);
+      color: var(--foreground);
+      font-weight: 500;
+    }
+
+    main {
+      width: min(72rem, 100%);
+      margin: 0 auto;
+      padding: 1.25rem 1rem 3rem;
+      display: flex;
+      flex-direction: column;
+      gap: 1.25rem;
+    }
+    .page-kicker {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.5rem;
+      margin: 0;
+      color: var(--metadata);
+      font-size: 0.75rem;
+    }
+    h1 {
+      margin: 0.375rem 0 0;
+      font-size: 1.5rem;
+      font-weight: 500;
+      letter-spacing: -0.02em;
+      line-height: 1.25;
+    }
+    h2 {
+      margin: 0;
+      font-size: 1rem;
+      font-weight: 500;
+      line-height: 1.25;
+    }
+    h3 {
+      margin: 0;
+      font-size: 0.875rem;
+      font-weight: 500;
+      line-height: 1.35;
+    }
+    .section { display: flex; flex-direction: column; gap: 0.75rem; }
+    .section-label {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      margin: 0;
+      color: var(--muted-foreground);
+      font-size: 0.75rem;
+      font-weight: 500;
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+    }
+    .lede {
+      max-width: 56rem;
+      margin: 0;
+      font-size: 0.875rem;
+      line-height: 1.45;
+    }
+
+    .card {
+      display: flex;
+      flex-direction: column;
+      gap: 0.75rem;
+      padding: 1rem;
+      border-radius: calc(var(--radius) * 1.4);
+      background: var(--card);
+      color: var(--card-foreground);
+      box-shadow: 0 0 0 1px var(--border);
+      font-size: 0.875rem;
+    }
+    .muted-card { background: var(--muted); }
+    .prose p { margin: 0; }
+    .prose p + p { margin-top: 0.75rem; }
+    .tag {
+      color: var(--primary);
+      font-weight: 500;
+    }
+
+    .stats {
+      display: grid;
+      grid-template-columns: repeat(6, minmax(0, 1fr));
+      gap: 0.75rem;
+    }
+    .stat {
+      padding: 0.75rem 0.875rem;
+      border-radius: calc(var(--radius) * 1.4);
+      background: var(--card);
+      box-shadow: 0 0 0 1px var(--border);
+    }
+    .stat-value {
+      margin: 0;
+      font-size: 1.125rem;
+      font-weight: 500;
+      letter-spacing: -0.02em;
+      line-height: 1.2;
+    }
+    .stat-label {
+      margin: 0.25rem 0 0;
+      color: var(--muted-foreground);
+      font-size: 0.75rem;
+    }
+    .stat-note {
+      margin: -0.25rem 0 0;
+      color: var(--metadata);
+      font-size: 0.75rem;
+    }
+
+    .stack { display: flex; flex-direction: column; gap: 0.75rem; }
+    .force, .risk {
+      display: grid;
+      grid-template-columns: auto 1fr;
+      gap: 0.75rem;
+      align-items: start;
+    }
+    .force-index, .rank, .risk-index {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 1.75rem;
+      height: 1.75rem;
+      border-radius: calc(var(--radius) * 0.6);
+      background: color-mix(in oklch, var(--primary) 10%, transparent);
+      color: var(--primary);
+      font-size: 0.75rem;
+      font-weight: 500;
+    }
+    .risk-index {
+      background: color-mix(in oklch, var(--destructive) 10%, transparent);
+      color: var(--destructive);
+    }
+
+    .theme-head {
+      display: flex;
+      align-items: flex-start;
+      gap: 0.75rem;
+    }
+    .theme-main { min-width: 0; display: flex; flex-direction: column; gap: 0.5rem; }
+    .theme-main h3 { font-size: 1rem; }
+    .badges, .queries { display: flex; flex-wrap: wrap; gap: 0.375rem; }
+    .badge {
+      display: inline-flex;
+      align-items: center;
+      height: 1.25rem;
+      width: fit-content;
+      padding: 0 0.5rem;
+      border: 1px solid transparent;
+      border-radius: calc(var(--radius) * 2.6);
+      font-size: 0.75rem;
+      font-weight: 500;
+      white-space: nowrap;
+    }
+    .badge-positive {
+      background: color-mix(in oklch, var(--positive) 12%, transparent);
+      color: var(--positive);
+    }
+    .badge-destructive {
+      background: color-mix(in oklch, var(--destructive) 10%, transparent);
+      color: var(--destructive);
+    }
+    .badge-secondary {
+      background: var(--secondary);
+      color: var(--secondary-foreground);
+    }
+    .badge-outline {
+      border-color: var(--border);
+      background: var(--card);
+      color: var(--foreground);
+    }
+    .badge-ghost {
+      background: transparent;
+      color: var(--metadata);
+      font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+      font-weight: 400;
+    }
+    .fields {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 0.75rem 1rem;
+      padding-top: 0.25rem;
+      border-top: 1px solid var(--border);
+    }
+    .field { display: flex; flex-direction: column; gap: 0.375rem; }
+    .kicker {
+      margin: 0;
+      color: var(--muted-foreground);
+      font-size: 0.75rem;
+      font-weight: 500;
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+    }
+    ul {
+      margin: 0;
+      padding-left: 1.1rem;
+    }
+    li + li { margin-top: 0.25rem; }
+    .theme-meta {
+      display: flex;
+      flex-direction: column;
+      gap: 0.75rem;
+      padding-top: 0.75rem;
+      border-top: 1px solid var(--border);
+    }
+    .query {
+      overflow-wrap: anywhere;
+      display: inline-flex;
+      padding: 0.2rem 0.45rem;
+      border-radius: 3px;
+      background: var(--muted);
+      color: var(--muted-foreground);
+      font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+      font-size: 0.75rem;
+      line-height: 1.35;
+    }
+    .scenarios {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 0.75rem;
+      align-items: start;
+    }
+    .scenario-bull h3 { color: var(--positive); }
+    .scenario-bear h3 { color: var(--destructive); }
+    .count {
+      display: inline-flex;
+      align-items: center;
+      height: 1.25rem;
+      padding: 0 0.5rem;
+      border-radius: calc(var(--radius) * 2.6);
+      background: var(--secondary);
+      color: var(--secondary-foreground);
+      font-size: 0.75rem;
+      font-weight: 500;
+      letter-spacing: 0;
+      text-transform: none;
+    }
+
+    @media (max-width: 960px) {
+      .stats, .scenarios, .fields { grid-template-columns: 1fr 1fr; }
+    }
+    @media (max-width: 640px) {
+      .stats, .scenarios, .fields { grid-template-columns: 1fr; }
+      .site-header { gap: 0.75rem; }
+    }
+:root {
+      --background: oklch(0.993 0.006 82);
+      --foreground: oklch(0.31 0.018 50);
+      --card: oklch(0.999 0.003 90);
+      --card-foreground: oklch(0.31 0.018 50);
+      --primary: oklch(0.40 0.055 250);
+      --primary-foreground: oklch(0.99 0.004 90);
+      --secondary: oklch(0.974 0.01 82);
+      --secondary-foreground: oklch(0.36 0.02 50);
+      --muted: oklch(0.974 0.01 82);
+      --muted-foreground: oklch(0.51 0.015 55);
+      --metadata: oklch(0.64 0.012 60);
+      --accent: oklch(0.969 0.014 78);
+      --destructive: oklch(0.55 0.14 25);
+      --positive: oklch(0.48 0.09 155);
+      --border: oklch(0.915 0.012 78);
+      --sidebar: oklch(0.987 0.008 82);
+      --sidebar-foreground: oklch(0.31 0.018 50);
+      --sidebar-primary: oklch(0.40 0.055 250);
+      --sidebar-primary-foreground: oklch(0.99 0.004 90);
+      --radius: 0.5rem;
+      --font-sans: ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+    }
+    * { box-sizing: border-box; }
+    html { font-family: var(--font-sans); scroll-behavior: smooth; }
+    body {
+      margin: 0;
+      background: var(--background);
+      color: var(--foreground);
+      line-height: 1.375;
+      -webkit-font-smoothing: antialiased;
+    }
+    a { color: var(--primary); text-decoration-thickness: 1px; text-underline-offset: 3px; }
+    .prose a, .note, p { overflow-wrap: anywhere; }
+    .site-header {
+      position: sticky;
+      top: 0;
+      z-index: 30;
+      display: flex;
+      align-items: center;
+      gap: 1.5rem;
+      height: 3rem;
+      padding: 0 1rem;
+      border-bottom: 1px solid var(--border);
+      background: var(--sidebar);
+    }
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      color: var(--sidebar-foreground);
+      text-decoration: none;
+      font-size: 0.875rem;
+      font-weight: 500;
+      white-space: nowrap;
+    }
+    .mark {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 1.75rem;
+      height: 1.75rem;
+      border-radius: calc(var(--radius) * 0.6);
+      background: var(--sidebar-primary);
+      color: var(--sidebar-primary-foreground);
+    }
+    .mark svg { width: 0.875rem; height: 0.875rem; }
+    .site-nav {
+      display: flex;
+      min-width: 0;
+      gap: 0.25rem;
+      overflow-x: auto;
+    }
+    .site-nav a {
+      display: inline-flex;
+      align-items: center;
+      height: 3rem;
+      padding: 0 0.75rem;
+      border-bottom: 2px solid transparent;
+      color: var(--muted-foreground);
+      font-size: 0.875rem;
+      text-decoration: none;
+      white-space: nowrap;
+    }
+    .site-nav a:hover { color: var(--foreground); }
+    .site-nav a.active {
+      border-bottom-color: var(--primary);
+      color: var(--foreground);
+      font-weight: 500;
+    }
+    main {
+      width: min(72rem, 100%);
+      margin: 0 auto;
+      padding: 1.25rem 1rem 3rem;
+      display: flex;
+      flex-direction: column;
+      gap: 1.25rem;
+    }
+    .page-kicker {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      gap: 0.5rem;
+      margin: 0;
+      color: var(--metadata);
+      font-size: 0.75rem;
+    }
+    h1 {
+      margin: 0.375rem 0 0;
+      font-size: 1.5rem;
+      font-weight: 500;
+      letter-spacing: -0.02em;
+      line-height: 1.25;
+    }
+    h3 {
+      margin: 0;
+      font-size: 0.875rem;
+      font-weight: 500;
+      line-height: 1.35;
+    }
+    .section { display: flex; flex-direction: column; gap: 0.75rem; }
+    .section-label {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      margin: 0;
+      color: var(--muted-foreground);
+      font-size: 0.75rem;
+      font-weight: 500;
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+    }
+    .lede, .note {
+      margin: 0;
+      font-size: 0.875rem;
+      line-height: 1.45;
+    }
+    .lede { max-width: 56rem; }
+    .note { color: var(--muted-foreground); }
+    .card {
+      display: flex;
+      flex-direction: column;
+      gap: 0.75rem;
+      padding: 1rem;
+      border-radius: calc(var(--radius) * 1.4);
+      background: var(--card);
+      color: var(--card-foreground);
+      box-shadow: 0 0 0 1px var(--border);
+      font-size: 0.875rem;
+    }
+    .compact p { margin: 0; }
+    .prose p { margin: 0; }
+    .prose p + p { margin-top: 0.75rem; }
+    .tag { color: var(--primary); font-weight: 500; }
+    .stats {
+      display: grid;
+      grid-template-columns: repeat(6, minmax(0, 1fr));
+      gap: 0.75rem;
+    }
+    .stat {
+      padding: 0.75rem 0.875rem;
+      border-radius: calc(var(--radius) * 1.4);
+      background: var(--card);
+      box-shadow: 0 0 0 1px var(--border);
+    }
+    .stat-value {
+      margin: 0;
+      font-size: 1.125rem;
+      font-weight: 500;
+      letter-spacing: -0.02em;
+      line-height: 1.2;
+    }
+    .stat-label {
+      margin: 0.25rem 0 0;
+      color: var(--muted-foreground);
+      font-size: 0.75rem;
+    }
+    .stack { display: flex; flex-direction: column; gap: 0.75rem; }
+    .split {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 0.75rem;
+      align-items: start;
+    }
+    .alloc-list { display: flex; flex-direction: column; gap: 0.8rem; }
+    .alloc-top {
+      display: flex;
+      justify-content: space-between;
+      gap: 0.75rem;
+      margin-bottom: 0.35rem;
+      font-size: 0.875rem;
+    }
+    .alloc-top span:last-child {
+      color: var(--muted-foreground);
+      font-variant-numeric: tabular-nums;
+    }
+    .track {
+      height: 0.4rem;
+      border-radius: 999px;
+      background: var(--muted);
+      overflow: hidden;
+    }
+    .fill {
+      height: 100%;
+      border-radius: inherit;
+      background: var(--primary);
+    }
+    .table-card {
+      overflow-x: auto;
+      border-radius: calc(var(--radius) * 1.4);
+      background: var(--card);
+      box-shadow: 0 0 0 1px var(--border);
+    }
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 0.875rem;
+    }
+    th {
+      height: 2rem;
+      padding: 0 0.75rem;
+      border-bottom: 1px solid var(--border);
+      color: var(--muted-foreground);
+      font-size: 0.75rem;
+      font-weight: 500;
+      text-align: left;
+    }
+    td {
+      padding: 0.45rem 0.75rem;
+      border-bottom: 1px solid var(--border);
+      vertical-align: top;
+    }
+    tr:last-child td { border-bottom: 0; }
+    .num { text-align: right; font-variant-numeric: tabular-nums; }
+    th.num { text-align: right; }
+    .ticker {
+      display: inline-flex;
+      align-items: center;
+      height: 1.25rem;
+      padding: 0 0.4rem;
+      border: 1px solid var(--border);
+      border-radius: 3px;
+      background: var(--card);
+      color: var(--foreground);
+      font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+      font-size: 0.75rem;
+      font-weight: 500;
+      text-decoration: none;
+    }
+    a.ticker:hover { background: var(--muted); }
+    .holding-head, .holding-title, .rejected-head {
+      display: flex;
+      align-items: flex-start;
+      gap: 0.75rem;
+    }
+    .holding-main { min-width: 0; flex: 1; display: flex; flex-direction: column; gap: 0.5rem; }
+    .holding-title { justify-content: space-between; }
+    .holding-title h3 { font-size: 1rem; }
+    .holding-figures {
+      display: flex;
+      align-items: baseline;
+      gap: 0.35rem;
+      white-space: nowrap;
+    }
+    .figure {
+      font-size: 1rem;
+      font-weight: 500;
+      font-variant-numeric: tabular-nums;
+    }
+    .figure-label {
+      margin-right: 0.45rem;
+      color: var(--metadata);
+      font-size: 0.75rem;
+    }
+    .badges { display: flex; flex-wrap: wrap; gap: 0.375rem; }
+    .badge {
+      display: inline-flex;
+      align-items: center;
+      height: 1.25rem;
+      width: fit-content;
+      padding: 0 0.5rem;
+      border: 1px solid transparent;
+      border-radius: calc(var(--radius) * 2.6);
+      font-size: 0.75rem;
+      font-weight: 500;
+      line-height: 1;
+    }
+    .badge-secondary { background: var(--secondary); color: var(--secondary-foreground); }
+    .badge-outline { border-color: var(--border); background: var(--card); color: var(--foreground); }
+    .badge-ghost {
+      background: transparent;
+      color: var(--metadata);
+      font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+      font-weight: 400;
+    }
+    .badge-positive {
+      background: color-mix(in oklch, var(--positive) 12%, transparent);
+      color: var(--positive);
+    }
+    .fields {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 0.75rem 1rem;
+      padding-top: 0.25rem;
+      border-top: 1px solid var(--border);
+    }
+    .field { display: flex; flex-direction: column; gap: 0.375rem; }
+    .kicker {
+      margin: 0;
+      color: var(--muted-foreground);
+      font-size: 0.75rem;
+      font-weight: 500;
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+    }
+    ul { margin: 0; padding-left: 1.1rem; }
+    li + li { margin-top: 0.25rem; }
+    .risk {
+      display: grid;
+      grid-template-columns: auto 1fr;
+      gap: 0.75rem;
+      align-items: start;
+    }
+    .risk-index {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 1.75rem;
+      height: 1.75rem;
+      border-radius: calc(var(--radius) * 0.6);
+      background: color-mix(in oklch, var(--destructive) 10%, transparent);
+      color: var(--destructive);
+      font-size: 0.75rem;
+      font-weight: 500;
+    }
+    .scenarios, .grid-2 {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 0.75rem;
+      align-items: start;
+    }
+    .grid-2 { grid-template-columns: 1fr 1fr; }
+    .scenario-bull h3 { color: var(--positive); }
+    .scenario-bear h3 { color: var(--destructive); }
+    .count {
+      display: inline-flex;
+      align-items: center;
+      height: 1.25rem;
+      padding: 0 0.5rem;
+      border-radius: calc(var(--radius) * 2.6);
+      background: var(--secondary);
+      color: var(--secondary-foreground);
+      font-size: 0.75rem;
+      font-weight: 500;
+      letter-spacing: 0;
+      text-transform: none;
+    }
+    @media (max-width: 960px) {
+      .stats, .scenarios, .fields, .split { grid-template-columns: 1fr 1fr; }
+      .scenarios { grid-template-columns: 1fr; }
+    }
+    @media (max-width: 640px) {
+      .stats, .fields, .split, .grid-2 { grid-template-columns: 1fr; }
+      .hide-narrow { display: none; }
+      .holding-title { flex-direction: column; }
+    }
+
+    .view-tabs {
+      display: flex;
+      align-items: stretch;
+      flex-shrink: 0;
+      height: 3rem;
+      gap: 0.25rem;
+    }
+    .view-tab {
+      appearance: none;
+      border: 0;
+      border-bottom: 2px solid transparent;
+      background: transparent;
+      color: var(--muted-foreground);
+      font: inherit;
+      font-size: 0.875rem;
+      padding: 0 0.75rem;
+      cursor: pointer;
+      white-space: nowrap;
+    }
+    .view-tab:hover { color: var(--foreground); }
+    .view-tab.active {
+      border-bottom-color: var(--primary);
+      color: var(--foreground);
+      font-weight: 500;
+    }
+    main[hidden], nav[hidden] { display: none !important; }
+
+  </style>
+</head>
+<body>
+  <header class="site-header">
+    <div class="view-tabs" role="tablist" aria-label="Views">
+      <button class="view-tab active" type="button" role="tab" data-view="market" aria-selected="true">Market views</button>
+      <button class="view-tab" type="button" role="tab" data-view="portfolio" aria-selected="false">AI portfolio</button>
+    </div>
+    <nav data-view-nav="market" class="site-nav" aria-label="Snapshot sections">
+      <a href="#market-summary">Summary</a>
+      <a href="#market-macro">Macro</a>
+      <a href="#market-market">Market</a>
+      <a href="#market-risks">Risks</a>
+      <a href="#market-themes">Themes</a>
+      <a href="#market-scenarios">Scenarios</a>
+    </nav>
+    <nav data-view-nav="portfolio" hidden class="site-nav" aria-label="Portfolio sections">
+      <a href="#portfolio-summary">Summary</a>
+      <a href="#portfolio-allocation">Allocation</a>
+      <a href="#portfolio-holdings">Holdings</a>
+      <a href="#portfolio-scenarios">Scenarios</a>
+      <a href="#portfolio-risks">Risks</a>
+      <a href="#portfolio-rejected">Rejected</a>
+      <a href="#portfolio-gaps">Limits</a>
+    </nav>
+  </header>
+  <main data-view="market" id="market-top">
+ <header>
+ <p class="page-kicker">
+ <span>30 October 2026</span>
+ <span aria-hidden="true">·</span>
+ <span>ms_2026-10-30-15-48-14.json</span></p>
+ <h1>U.S. equities, selectively constructive</h1>
+ </header>
+
+ <section class="stats" aria-label="Cited figures">
+ 
+<div class="stat">
+ <p class="stat-value">3.4%</p>
+ <p class="stat-label">Q3 real GDP</p>
+</div>
+
+
+<div class="stat">
+ <p class="stat-value">3.1%</p>
+ <p class="stat-label">Core PCE</p>
+</div>
+
+
+<div class="stat">
+ <p class="stat-value">3.75–4.00%</p>
+ <p class="stat-label">Fed funds</p>
+</div>
+
+
+<div class="stat">
+ <p class="stat-value">4.98%</p>
+ <p class="stat-label">10-year yield</p>
+</div>
+
+
+<div class="stat">
+ <p class="stat-value">18.7x</p>
+ <p class="stat-label">Forward P/E</p>
+</div>
+
+
+<div class="stat">
+ <p class="stat-value">29.5%</p>
+ <p class="stat-label">Blended Q3 EPS</p>
+</div>
+
+ </section>
+ <p class="stat-note">Figures cited in this 30 October 2026 snapshot. They are not a verified market close.</p>
+
+ <section class="section" id="market-summary">
+ <p class="section-label">Executive summary</p>
+ <div class="card prose"><p>Investment stance: selectively constructive on U.S. equities over the next 12 months, but favor identifiable revenue conversion and cash generation over broad market multiple expansion. Reported growth remains strong: BEA&#x27;s October 29 advance estimate showed Q3 real GDP growth of 3.4% annualized. However, September real consumption was essentially flat, while core PCE inflation remained 3.1% year over year. The Federal Reserve held its policy range at 3.75%–4.00% on October 28, with two dissents favoring an increase. This combination supports selective investment-led growth rather than an indiscriminate easing-cycle trade. Ranked themes: 1) electrical infrastructure order conversion; 2) missile-defense production; 3) procedure-linked medical technology; 4) proven enterprise AI monetization; 5) domestic oil production as an inflation hedge; 6) underweight vulnerable discretionary consumption; 7) underweight refinancing-dependent business models. Rankings reflect evidence quality, prospective earnings transmission and diversification—not verified security-level cheapness. All implementation decisions remain conditional on valuation screening. Company disclosures below are industry evidence, not individual security recommendations. Research uses information published by the requested date, but does not represent a verified October 30 market close. No scenario probabilities or portfolio weights are assigned.</p></div>
+ </section>
+
+ <section class="section" id="market-macro">
+ <p class="section-label">Macro outlook <span class="count">5</span></p>
+ <p class="lede">Five forces dominate the U.S. outlook.</p>
+ <div class="stack">
+<article class="card force">
+ <div class="force-index">1</div>
+ <div>
+ <h3>Strong aggregate growth, but a less reassuring consumption exit rate.</h3>
+ <div class="prose"><p><span class="tag">REPORTED</span> BEA&#x27;s October 29, 2026 GDP summary showed Q3 real GDP rising 3.4% annualized versus 2.2% in Q2, with investment, consumption and government spending contributing positively. Its September income report, also published October 29, showed real PCE growth below 0.1% month over month, real disposable income down 0.3%, and a 3.8% saving rate. <span class="tag">INTERPRETATION</span> investment-related suppliers have stronger support than businesses requiring sustained acceleration in household purchasing power; one weak monthly observation does not establish a recession. Observation periods: Q3 2026 and September 2026. The GDP summary was verified; the full advance-release page was not accessible.</p></div>
+ </div>
+</article>
+
+
+<article class="card force">
+ <div class="force-index">2</div>
+ <div>
+ <h3>Inflation limits monetary accommodation.</h3>
+ <div class="prose"><p><span class="tag">REPORTED</span> September CPI rose 0.6% monthly and 3.7% annually; core CPI rose 0.3% monthly and 2.6% annually. Gasoline accounted for more than half the monthly headline increase. September PCE inflation was 3.6% annually, with core PCE at 3.1%. The October 28 FOMC held 3.75%–4.00%, following September&#x27;s quarter-point increase; two October dissenters preferred another increase. <span class="tag">INTERPRETATION</span> do not build the portfolio around imminent cuts. Elevated discount rates penalize distant cash flows, while fuel inflation pressures consumer purchasing power and transport margins. published October 14; the BEA income release above, published October 29; published October 28; published September 16.</p></div>
+ </div>
+</article>
+
+
+<article class="card force">
+ <div class="force-index">3</div>
+ <div>
+ <h3>Labor and credit conditions are uneven, not uniformly contractionary.</h3>
+ <div class="prose"><p><span class="tag">REPORTED</span> the October 2 employment release showed September payroll growth of 29,000 and unemployment of 4.2%. September manufacturing PMI was 54.5, with new orders at 55.3 and prices at 77.9. The July SLOOS, updated August 3 and generally covering Q2, reported unchanged C&amp;I standards, stronger large/middle-market loan demand, tighter credit-card standards and weaker mortgage demand. <span class="tag">INTERPRETATION</span> capital spending can remain supportive despite modest hiring, but financing access differs materially between corporate and household borrowers. SLOOS is lagged evidence, not a current-quarter credit assessment. ISM observation period is September 2026; the exact publication date was not independently verified.</p></div>
+ </div>
+</article>
+
+
+<article class="card force">
+ <div class="force-index">4</div>
+ <div>
+ <h3>Energy security is an earnings and inflation variable.</h3>
+ <div class="prose"><p><span class="tag">REPORTED/ESTIMATED</span> EIA&#x27;s October 6 outlook reported September Brent averaging $114/barrel following Middle Eastern supply disruptions. <span class="tag">EIA FORECAST</span> $105/barrel in Q4 2026, with constrained regional exports. These are monthly observations and forecasts, not October 30 spot prices. <span class="tag">INTERPRETATION</span> domestic low-cost oil production can offset some portfolio exposure to an adverse supply shock; normalization would reverse that benefit. publication October 6, 2026; observation September 2026 and forecast Q4 2026.</p></div>
+ </div>
+</article>
+
+
+<article class="card force">
+ <div class="force-index">5</div>
+ <div>
+ <h3>Fiscal financing can keep long-duration capital expensive.</h3>
+ <div class="prose"><p><span class="tag">REPORTED</span> the Joint Economic Committee&#x27;s October 22 fiscal update reported a $1.992 trillion FY2026 deficit, versus $1.775 trillion in FY2025. Treasury&#x27;s October 29 curve showed a 4.98% ten-year yield. <span class="tag">INTERPRETATION</span> substantial financing requirements create a potential term-premium headwind, although this evidence does not establish that deficits caused the observed yield level. Observation periods: fiscal year ended September 30 and October 29, 2026. The fiscal figure is attributed to the congressional release; the underlying September Treasury statement could not be retrieved.</p></div>
+ </div>
+</article>
+</div>
+ <div class="card muted-card prose"><p>Scope: domestic equities and equity ETFs in USD. Current European and Chinese growth releases, exchange-rate changes and precise trade-policy exposures were not independently verified. They remain external-demand and supply-chain monitoring variables rather than quantified inputs.</p></div>
+ </section>
+
+ <section class="section" id="market-market">
+ <p class="section-label">Market assessment</p>
+ <div class="stack">
+<article class="card">
+ <h3>Earnings and valuation</h3>
+ <div class="prose"><p>The latest directly verified FactSet update was October 23, not October 30. With 24% of S&amp;P 500 constituents reporting, blended Q3 earnings growth was 29.5%; this combines actual results with estimates. Although 83% beat EPS estimates, aggregate earnings exceeded expectations by only 2.1%, below FactSet&#x27;s five-year average of 7.5%. Forward P/E was 18.7 versus five- and ten-year averages of 19.8 and 19.1. Ten sectors showed earnings growth; healthcare was the exception. <span class="tag">INTERPRETATION</span> the index was not expensive against these particular historical forward-P/E benchmarks, but the denominator embeds strong earnings expectations. A high beat rate alone overstates the strength of the surprise. publication and observation October 23. An October 30 update could not be retrieved.</p></div>
+</article>
+
+
+<article class="card">
+ <h3>Performance and breadth</h3>
+ <div class="prose"><p>An October 1 reproduction of the September U.S. performance dashboard reported Q3 gains of approximately 2% for the S&amp;P 500 and 4% for its Top 50, versus declines of 6% for midcaps and 8% for smallcaps. Energy gained 17%; utilities lost 12%. These rounded, secondary-source observations suggest narrow leadership and show that energy strength was already recognized. They are not October returns; the original index-provider document was not independently retrieved. observation quarter ended September 30.</p></div>
+</article>
+
+
+<article class="card">
+ <h3>Rates and credit</h3>
+ <div class="prose"><p>Treasury reported October 29 yields of 4.61% for two years, 4.98% for ten years and 5.32% for thirty years. ICE BofA high-yield OAS, distributed through FRED and updated October 29, was 3.14 percentage points on October 28, down from 3.40 on October 22. <span class="tag">INTERPRETATION</span> high risk-free financing costs coexist with recently improving credit risk appetite; this argues against treating every leveraged borrower as distressed. Equity earnings yields and Treasury yields are not interchangeable, so no mechanical equity-risk-premium estimate is presented.</p></div>
+</article>
+
+
+<article class="card">
+ <h3>Portfolio implication</h3>
+ <div class="prose"><p>Favor earnings conversion over rerating. Treat electrical investment and AI monetization as partially shared exposures, not independent diversification. Defense, medical consumables and a limited oil hedge provide different demand drivers. Bearish themes should initially be implemented as exclusions or underweights, not automatic short positions. ETF selection must examine holdings, revenue purity, leverage, expense ratios, liquidity and overlap rather than relying on fund names.</p></div>
+</article>
+
+
+<article class="card muted-card">
+ <h3>Unverified</h3>
+ <div class="prose"><p>October 30 closing index levels and returns; current constituent concentration weights; contemporaneous sector valuation distributions; full-market earnings revisions after October 23; options positioning, fund flows and a numeric NFCI reading. Security-level expected returns cannot be responsibly estimated from the available evidence.</p></div>
+</article>
+</div>
+ </section>
+
+ <section class="section" id="market-risks">
+ <p class="section-label">Key market risks <span class="count">7</span></p>
+ <div class="stack">
+<article class="card risk">
+ <div class="risk-index">1</div>
+ <div class="prose"><p>Persistent energy inflation and renewed tightening: scenario risk supported by September inflation and the October FOMC split. Higher input costs reduce consumer and transport margins while higher discount rates pressure long-duration equities. Low-cost domestic oil production can provide a partial hedge, not comprehensive protection.</p></div>
+</article>
+
+
+<article class="card risk">
+ <div class="risk-index">2</div>
+ <div class="prose"><p>Consumer slowdown: the September spending/income divergence could develop into weaker discretionary volumes, promotional activity and credit losses. Vulnerable exposures include low-margin retailers, discretionary services and nonprime lenders; essential purchases and low-cost distribution may be relatively resilient. This is a conditional transmission mechanism, not a forecast of an imminent recession.</p></div>
+</article>
+
+
+<article class="card risk">
+ <div class="risk-index">3</div>
+ <div class="prose"><p>Earnings-denominator risk: forward valuation looks reasonable only if elevated profits persist. Smaller-than-usual aggregate EPS surprises increase the importance of guidance and cash conversion. An earnings reset could simultaneously lower profits and raise effective valuation multiples.</p></div>
+</article>
+
+
+<article class="card risk">
+ <div class="risk-index">4</div>
+ <div class="prose"><p>AI investment reversal: disappointing customer economics could reduce infrastructure orders and enterprise spending together. Electrical suppliers, networking vendors and cloud platforms therefore share a demand risk despite different business models. The portfolio should impose a combined exposure limit; strong disclosed growth does not eliminate this risk.</p></div>
+</article>
+
+
+<article class="card risk">
+ <div class="risk-index">5</div>
+ <div class="prose"><p>Refinancing and liquidity stress: sustained long-term yields can increase interest expense and reduce refinancing proceeds for weak borrowers. Exposure is greatest where cash generation is poor and debt matures soon. However, recent high-yield spread narrowing is important counterevidence against a generalized credit-crisis thesis.</p></div>
+</article>
+
+
+<article class="card risk">
+ <div class="risk-index">6</div>
+ <div class="prose"><p>Geopolitical and procurement risk: further supply disruption can hurt energy importers, shipping and manufacturers; de-escalation can reduce oil profits and perceived defense urgency. Defense backlog is not immediate cash, and production constraints or contract losses can prevent conversion.</p></div>
+</article>
+
+
+<article class="card risk">
+ <div class="risk-index">7</div>
+ <div class="prose"><p>Regulatory and legal risk: enterprise AI and medical platforms require business-specific diligence rather than blanket growth assumptions. Medical technology evidence includes a material antitrust settlement charge, demonstrating that recurring procedure demand does not insulate earnings from legal losses.</p></div>
+</article>
+</div>
+ </section>
+
+ <section class="section" id="market-themes">
+ <p class="section-label">Investment themes <span class="count">7</span></p>
+ <div class="stack">
+<article class="card theme" id="market-US_20261030_01">
+ <header class="theme-head">
+ <div class="rank">1</div>
+ <div class="theme-main">
+ <h3>Convert electrical infrastructure orders into cash earnings</h3>
+ <div class="badges">
+ <span class="badge badge-positive">Bullish</span>
+ <span class="badge badge-secondary">Medium conviction</span>
+ <span class="badge badge-outline">12 months</span>
+ <span class="badge badge-ghost">US_20261030_01</span>
+ </div>
+ </div>
+ </header>
+ <div class="prose"><p>Rank 1. Favor suppliers of power distribution, protection and thermal-management equipment with deliverable orders, diversified customers and disciplined capacity investment. <span class="tag">EVIDENCE</span> Eaton&#x27;s Q2 2026 release reported 41% growth in trailing-twelve-month Electrical Americas orders and 43% electrical backlog growth. The exact publication date was not visible in the retrieved release and remains unverified; observation period is Q2 2026. <span class="tag">INTERPRETATION</span> order conversion offers a more tangible earnings mechanism than undifferentiated AI exposure. <span class="tag">EXPECTATIONS</span> strong demand is publicly recognized; no sector undervaluation or crowding claim is established. <span class="tag">IMPLEMENTATION</span> diversified thematic basket or carefully screened industrial ETF, excluding unrelated holdings. <span class="tag">SCENARIOS</span> favorable in base and bull cases; vulnerable to an AI-capex contraction. <span class="tag">RANK RATIONALE</span> strong observable demand and near-term conversion catalysts, offset by valuation uncertainty and shared AI exposure.</p></div>
+ <div class="fields">
+ <div class="field"><p class="kicker">Key drivers</p><ul><li>Analytical driver: conversion of booked electrical infrastructure demand into shipments.</li>
+<li>Customer value from reliable power delivery and greater equipment efficiency.</li>
+<li>Service and replacement revenue alongside new installations.</li></ul></div>
+ <div class="field"><p class="kicker">Beneficiary exposures</p><ul><li>Switchgear, circuit protection, transformers and power-distribution systems.</li>
+<li>Data-center power management and cooling equipment with validated customer orders.</li>
+<li>Suppliers with price-adjustment clauses, diversified end markets and manageable expansion spending.</li></ul></div>
+ <div class="field"><p class="kicker">Disadvantaged exposures</p><ul><li>Fixed-price installers unable to pass through equipment and labor costs.</li>
+<li>Speculative capacity suppliers dependent on one customer or unfinanced projects.</li>
+<li>Highly leveraged utilities lacking timely regulatory cost recovery.</li></ul></div>
+ <div class="field"><p class="kicker">Financial impact</p><p>Forecast mechanism: shipments lift revenue and factory utilization; service mix can support margins. Inventory and capacity spending may initially absorb cash, so backlog growth must be accompanied by improving cash conversion.</p></div>
+ <div class="field"><p class="kicker">Catalysts</p><ul><li>Subsequent quarterly order and backlog disclosures.</li>
+<li>Commissioning of funded customer projects.</li>
+<li>Higher manufacturing throughput and lower delivery bottlenecks.</li></ul></div>
+ <div class="field"><p class="kicker">Risks</p><ul><li>Customer deferrals, duplicate ordering or cancellations.</li>
+<li>Input inflation and fixed-price commitments.</li>
+<li>Valuation already discounting several years of exceptional growth.</li></ul></div>
+ <div class="field"><p class="kicker">Invalidation</p><ul><li>Sustained order contraction with backlog cancellations rather than normal conversion.</li>
+<li>Rising revenue accompanied by persistent deterioration in operating cash flow.</li>
+<li>Customer financing failures materially reducing project completion.</li></ul></div>
+ <div class="field"><p class="kicker">Monitoring</p><ul><li>Organic orders, book-to-bill and backlog aging.</li>
+<li>Segment margins and cash flow relative to operating profit.</li>
+<li>Customer concentration and committed versus proposed project spending.</li>
+<li>Valuation relative to normalized—not peak—margins.</li></ul></div>
+ </div>
+ <div class="theme-meta">
+ <div class="field"><p class="kicker">Sectors</p><div class="badges"><span class="badge badge-outline">Industrials</span> <span class="badge badge-outline">Information Technology</span></div></div>
+ <div class="field"><p class="kicker">Industries</p><div class="badges"><span class="badge badge-outline">Electrical Equipment</span> <span class="badge badge-outline">Building Products</span> <span class="badge badge-outline">Electronic Equipment and Components</span></div></div>
+ <div class="field"><p class="kicker">Search queries</p><div class="queries"><span class="query">electrical equipment quarterly organic orders backlog cash conversion 2026</span> <span class="query">data center power distribution cooling funded projects customer concentration</span></div></div>
+ </div>
+</article>
+
+
+<article class="card theme" id="market-US_20261030_02">
+ <header class="theme-head">
+ <div class="rank">2</div>
+ <div class="theme-main">
+ <h3>Missile-defense production rather than generic defense exposure</h3>
+ <div class="badges">
+ <span class="badge badge-positive">Bullish</span>
+ <span class="badge badge-secondary">Medium conviction</span>
+ <span class="badge badge-outline">12 months</span>
+ <span class="badge badge-ghost">US_20261030_02</span>
+ </div>
+ </div>
+ </header>
+ <div class="prose"><p>Rank 2. Favor production-ready missile defense, propulsion, guidance and sustainment exposures with executable contracts. <span class="tag">EVIDENCE</span> Lockheed Martin&#x27;s October 22 release reported Q3 sales growth of 11% and $292.0 billion of backlog, including $52.5 billion associated with a multiyear PAC-3 interceptor award. Quarterly free cash flow nevertheless declined year over year, illustrating that backlog and cash conversion differ. observation Q3 2026. <span class="tag">EXPECTATIONS</span> the award is public and should not be treated as undiscovered; supplier-level production economics may offer differentiation, but valuation must be verified. <span class="tag">IMPLEMENTATION</span> focused defense-production basket or holdings-screened defense ETF. <span class="tag">SCENARIOS</span> supportive in base and geopolitical-stress cases; may lag in a de-escalation-led bull market. <span class="tag">RANK RATIONALE</span> contractual visibility and diversification from consumer demand, tempered by execution and procurement risk.</p></div>
+ <div class="fields">
+ <div class="field"><p class="kicker">Key drivers</p><ul><li>Conversion of multiyear interceptor awards into production.</li>
+<li>Manufacturing throughput and qualified supplier availability.</li>
+<li>Maintenance, replenishment and sustainment associated with deployed systems.</li></ul></div>
+ <div class="field"><p class="kicker">Beneficiary exposures</p><ul><li>Interceptors, solid rocket motors, guidance electronics and qualified components.</li>
+<li>Production tooling and testing tied to awarded programs.</li>
+<li>Sustainment providers with recurring service content and limited development risk.</li></ul></div>
+ <div class="field"><p class="kicker">Disadvantaged exposures</p><ul><li>Fixed-price development programs with unresolved technical challenges.</li>
+<li>Suppliers expanding capacity without firm orders.</li>
+<li>Businesses dependent on a single uncertain appropriation.</li></ul></div>
+ <div class="field"><p class="kicker">Financial impact</p><p>Forecast mechanism: higher deliveries increase revenue and can spread fixed manufacturing costs. Working-capital needs, customer advances and contract accounting determine when accounting profits become cash.</p></div>
+ <div class="field"><p class="kicker">Catalysts</p><ul><li>Production-lot awards and delivery milestones.</li>
+<li>Capacity qualification and supplier expansion.</li>
+<li>Evidence that funded orders convert without program charges.</li></ul></div>
+ <div class="field"><p class="kicker">Risks</p><ul><li>Appropriation delays and reprioritization.</li>
+<li>Cost overruns, technical failures and shortages.</li>
+<li>Investor expectations rising faster than achievable production.</li></ul></div>
+ <div class="field"><p class="kicker">Invalidation</p><ul><li>Material award cancellations or prolonged funding interruptions.</li>
+<li>Repeated charges offsetting production growth.</li>
+<li>Backlog growth failing to translate into deliveries and cash.</li></ul></div>
+ <div class="field"><p class="kicker">Monitoring</p><ul><li>Funded versus total backlog.</li>
+<li>Program delivery rates and segment margins.</li>
+<li>Contract assets, customer advances and free cash flow.</li>
+<li>Revenue exposure to production versus development.</li></ul></div>
+ </div>
+ <div class="theme-meta">
+ <div class="field"><p class="kicker">Sectors</p><div class="badges"><span class="badge badge-outline">Industrials</span></div></div>
+ <div class="field"><p class="kicker">Industries</p><div class="badges"><span class="badge badge-outline">Aerospace and Defense</span></div></div>
+ <div class="field"><p class="kicker">Search queries</p><div class="queries"><span class="query">missile defense interceptor production funded backlog supplier capacity 2026</span> <span class="query">defense contractor fixed price program charges cash conversion</span></div></div>
+ </div>
+</article>
+
+
+<article class="card theme" id="market-US_20261030_03">
+ <header class="theme-head">
+ <div class="rank">3</div>
+ <div class="theme-main">
+ <h3>Recurring medical consumables tied to procedure growth</h3>
+ <div class="badges">
+ <span class="badge badge-positive">Bullish</span>
+ <span class="badge badge-secondary">Medium conviction</span>
+ <span class="badge badge-outline">12 months</span>
+ <span class="badge badge-ghost">US_20261030_03</span>
+ </div>
+ </div>
+ </header>
+ <div class="prose"><p>Rank 3. Favor installed medical platforms whose economics depend on recurring procedure-linked instruments and service, rather than solely on equipment placements. <span class="tag">EVIDENCE</span> Intuitive&#x27;s October 20 Q3 release reported approximately 15% combined worldwide procedure growth and 22% revenue growth. GAAP net income declined and included a $450 million pretax antitrust settlement charge. Management&#x27;s 14%–15% full-year da Vinci procedure outlook is guidance, not a reported outcome. observation quarter ended September 30, 2026. Worldwide figures are not U.S.-only growth estimates. <span class="tag">EXPECTATIONS</span> procedure growth is visible; no cheapness is established. <span class="tag">IMPLEMENTATION</span> selective medical-technology basket, not indiscriminate healthcare exposure. <span class="tag">SCENARIOS</span> favorable in base and bull cases; potentially relatively resilient in a slowdown, but not immune to deferred procedures. <span class="tag">RANK RATIONALE</span> recurring activity and diversification, offset by valuation, reimbursement and legal risks.</p></div>
+ <div class="fields">
+ <div class="field"><p class="kicker">Key drivers</p><ul><li>Installed-base utilization and procedure adoption.</li>
+<li>Recurring instrument and service attachment.</li>
+<li>Customer economics that support sustained clinical use.</li></ul></div>
+ <div class="field"><p class="kicker">Beneficiary exposures</p><ul><li>Procedure-linked consumables and recurring maintenance.</li>
+<li>Platforms with demonstrated utilization and clinical value.</li>
+<li>Businesses with strong balance sheets and diversified hospital customers.</li></ul></div>
+ <div class="field"><p class="kicker">Disadvantaged exposures</p><ul><li>Equipment-only models with weak recurring revenue.</li>
+<li>Legacy suppliers losing procedure share.</li>
+<li>Platforms requiring aggressive financing to sustain placements.</li></ul></div>
+ <div class="field"><p class="kicker">Financial impact</p><p>Forecast mechanism: greater procedure volume expands consumable revenue; a larger active installed base supports service revenue. Earnings quality depends on pricing, instrument margins and the treatment of recurring versus exceptional expenses.</p></div>
+ <div class="field"><p class="kicker">Catalysts</p><ul><li>Quarterly procedure and utilization updates.</li>
+<li>New clinical applications with demonstrated reimbursement and economics.</li>
+<li>Sustained consumables growth independent of placement volatility.</li></ul></div>
+ <div class="field"><p class="kicker">Risks</p><ul><li>Reimbursement pressure and hospital budget constraints.</li>
+<li>Competition, product liability and antitrust litigation.</li>
+<li>High entry multiples despite attractive business fundamentals.</li></ul></div>
+ <div class="field"><p class="kicker">Invalidation</p><ul><li>Persistent utilization weakness despite installed-base growth.</li>
+<li>Material loss of reimbursement or clinical competitiveness.</li>
+<li>Pricing erosion offsetting procedure growth.</li></ul></div>
+ <div class="field"><p class="kicker">Monitoring</p><ul><li>U.S. versus international procedure growth.</li>
+<li>Recurring revenue mix and instrument revenue per procedure.</li>
+<li>Installed-base utilization and customer financing.</li>
+<li>GAAP earnings, legal provisions and normalized cash generation.</li></ul></div>
+ </div>
+ <div class="theme-meta">
+ <div class="field"><p class="kicker">Sectors</p><div class="badges"><span class="badge badge-outline">Health Care</span></div></div>
+ <div class="field"><p class="kicker">Industries</p><div class="badges"><span class="badge badge-outline">Health Care Equipment</span> <span class="badge badge-outline">Health Care Supplies</span></div></div>
+ <div class="field"><p class="kicker">Search queries</p><div class="queries"><span class="query">medical device procedure growth recurring instruments service revenue Q3 2026</span> <span class="query">robotic surgery utilization reimbursement hospital capital budgets</span></div></div>
+ </div>
+</article>
+
+
+<article class="card theme" id="market-US_20261030_04">
+ <header class="theme-head">
+ <div class="rank">4</div>
+ <div class="theme-main">
+ <h3>Own demonstrated enterprise AI monetization, not adoption narratives</h3>
+ <div class="badges">
+ <span class="badge badge-positive">Bullish</span>
+ <span class="badge badge-secondary">Medium conviction</span>
+ <span class="badge badge-outline">12 months</span>
+ <span class="badge badge-ghost">US_20261030_04</span>
+ </div>
+ </div>
+ </header>
+ <div class="prose"><p>Rank 4. Favor enterprise platforms that demonstrate paid consumption, durable distribution and cash returns after infrastructure spending. <span class="tag">EVIDENCE</span> Microsoft&#x27;s October 28 release for the quarter ended September 30 reported cloud revenue growth of 30%, Azure growth of 48%, and total operating-income growth of 21%. GAAP EPS growth of 32% differed from adjusted growth of 18%, underscoring the need to separate investment-accounting effects from operations. These figures establish one platform&#x27;s performance, not industry-wide AI profitability. <span class="tag">EXPECTATIONS</span> growth is highly visible; superior prospective returns are not established without valuation and capital-intensity analysis. <span class="tag">IMPLEMENTATION</span> selective enterprise platform basket; avoid broad software ETFs with substantial unprofitable or disrupted holdings. <span class="tag">SCENARIOS</span> strongest in the bull case; vulnerable to both valuation compression and weaker customer returns. <span class="tag">RANK RATIONALE</span> powerful earnings evidence, reduced ranking for reinvestment risk and overlap with theme 1.</p></div>
+ <div class="fields">
+ <div class="field"><p class="kicker">Key drivers</p><ul><li>Paid cloud usage and enterprise workflow adoption.</li>
+<li>Distribution through existing customer relationships.</li>
+<li>Customer productivity benefits that support renewal and expansion.</li></ul></div>
+ <div class="field"><p class="kicker">Beneficiary exposures</p><ul><li>Cloud and enterprise platforms with measurable paid usage.</li>
+<li>Workflow, security and data services with durable customer integration.</li>
+<li>Businesses generating attractive incremental returns after compute costs.</li></ul></div>
+ <div class="field"><p class="kicker">Disadvantaged exposures</p><ul><li>Undifferentiated AI applications with weak retention.</li>
+<li>Seat-based software unable to replace revenue lost to automation.</li>
+<li>Infrastructure-heavy services with persistent negative free cash flow.</li></ul></div>
+ <div class="field"><p class="kicker">Financial impact</p><p>Forecast mechanism: consumption and paid adoption lift recurring revenue; operating leverage may improve earnings. Compute expense, depreciation, leasing and capital expenditure can offset accounting growth, making free cash flow and return on invested capital essential.</p></div>
+ <div class="field"><p class="kicker">Catalysts</p><ul><li>Paid adoption and renewal disclosures.</li>
+<li>Improved customer economics and inference efficiency.</li>
+<li>Revenue growth exceeding growth in fully measured capital commitments.</li></ul></div>
+ <div class="field"><p class="kicker">Risks</p><ul><li>Price competition and commoditization.</li>
+<li>Capital spending and depreciation outrunning monetization.</li>
+<li>Security, legal and regulatory costs.</li></ul></div>
+ <div class="field"><p class="kicker">Invalidation</p><ul><li>Persistent deterioration in cash returns despite reported revenue growth.</li>
+<li>Weak renewals or paid usage after trials.</li>
+<li>Infrastructure commitments exceeding supportable customer demand.</li></ul></div>
+ <div class="field"><p class="kicker">Monitoring</p><ul><li>Paid usage, retention and recurring revenue.</li>
+<li>Gross margin after compute costs.</li>
+<li>Cash capital expenditure, finance leases and depreciation.</li>
+<li>Operating cash flow less capital spending and dilution.</li></ul></div>
+ </div>
+ <div class="theme-meta">
+ <div class="field"><p class="kicker">Sectors</p><div class="badges"><span class="badge badge-outline">Information Technology</span></div></div>
+ <div class="field"><p class="kicker">Industries</p><div class="badges"><span class="badge badge-outline">Systems Software</span> <span class="badge badge-outline">Application Software</span> <span class="badge badge-outline">IT Services</span></div></div>
+ <div class="field"><p class="kicker">Search queries</p><div class="queries"><span class="query">enterprise AI paid adoption cloud revenue capex free cash flow 2026</span> <span class="query">software retention inference costs depreciation AI monetization</span></div></div>
+ </div>
+</article>
+
+
+<article class="card theme" id="market-US_20261030_05">
+ <header class="theme-head">
+ <div class="rank">5</div>
+ <div class="theme-main">
+ <h3>Low-cost domestic oil production as a supply-shock hedge</h3>
+ <div class="badges">
+ <span class="badge badge-secondary">Defensive</span>
+ <span class="badge badge-secondary">Medium conviction</span>
+ <span class="badge badge-outline">12 months</span>
+ <span class="badge badge-ghost">US_20261030_05</span>
+ </div>
+ </div>
+ </header>
+ <div class="prose"><p>Rank 5. Use disciplined domestic oil production as a limited equity hedge against prolonged supply disruption, not as a forecast that oil prices rise indefinitely. <span class="tag">EVIDENCE</span> EIA&#x27;s October 6 outlook reported September Brent at $114/barrel and forecast $105 for Q4 amid constrained Middle Eastern exports. September observation and Q4 forecast. <span class="tag">EXPECTATIONS</span> the September dashboard&#x27;s strong energy-sector performance suggests the shock was already recognized; the opportunity is conditional on sustainable cash yields at normalized oil prices. <span class="tag">IMPLEMENTATION</span> limited diversified producer exposure or a holdings-screened energy ETF; do not substitute a futures fund for this equity thesis. <span class="tag">SCENARIOS</span> beneficial under inflationary supply stress, vulnerable under de-escalation or demand-led recession. <span class="tag">RANK RATIONALE</span> diversification against inflation, but less durable than contracted demand and highly price-sensitive.</p></div>
+ <div class="fields">
+ <div class="field"><p class="kicker">Key drivers</p><ul><li>Supply availability and export-route disruption.</li>
+<li>Producer capital discipline.</li>
+<li>Cash generation at conservative realized-price assumptions.</li></ul></div>
+ <div class="field"><p class="kicker">Beneficiary exposures</p><ul><li>Low-cost U.S. production with strong balance sheets.</li>
+<li>Long-lived assets and restrained reinvestment requirements.</li>
+<li>Operators with transparent hedges and shareholder-distribution policies.</li></ul></div>
+ <div class="field"><p class="kicker">Disadvantaged exposures</p><ul><li>Fuel-intensive transport with limited pass-through.</li>
+<li>High-cost producers expanding aggressively at elevated prices.</li>
+<li>Businesses exposed to disrupted export routes.</li></ul></div>
+ <div class="field"><p class="kicker">Financial impact</p><p>Scenario mechanism: higher realized oil prices increase operating cash generation when cost growth is contained. Hedge books, taxes, service inflation and capital expenditure determine the retained benefit.</p></div>
+ <div class="field"><p class="kicker">Catalysts</p><ul><li>Changes in export-route availability.</li>
+<li>Inventory and production updates.</li>
+<li>Producer capital budgets and distribution decisions.</li></ul></div>
+ <div class="field"><p class="kicker">Risks</p><ul><li>Rapid normalization of supply.</li>
+<li>Demand destruction or recession.</li>
+<li>Sector valuations capitalizing temporary peak cash flows.</li></ul></div>
+ <div class="field"><p class="kicker">Invalidation</p><ul><li>Sustained supply normalization removing the hedge rationale.</li>
+<li>Capital spending absorbing the expected cash windfall.</li>
+<li>Operating costs or leverage making normalized economics unattractive.</li></ul></div>
+ <div class="field"><p class="kicker">Monitoring</p><ul><li>Realized prices, production costs and hedging.</li>
+<li>Inventories and physical export flows.</li>
+<li>Free cash flow under normalized oil assumptions.</li>
+<li>Capital expenditure relative to operating cash flow.</li></ul></div>
+ </div>
+ <div class="theme-meta">
+ <div class="field"><p class="kicker">Sectors</p><div class="badges"><span class="badge badge-outline">Energy</span></div></div>
+ <div class="field"><p class="kicker">Industries</p><div class="badges"><span class="badge badge-outline">Oil and Gas Exploration and Production</span> <span class="badge badge-outline">Integrated Oil and Gas</span></div></div>
+ <div class="field"><p class="kicker">Search queries</p><div class="queries"><span class="query">EIA oil supply disruptions inventories October 2026 outlook</span> <span class="query">US oil producers normalized breakeven free cash flow capital discipline</span></div></div>
+ </div>
+</article>
+
+
+<article class="card theme" id="market-US_20261030_06">
+ <header class="theme-head">
+ <div class="rank">6</div>
+ <div class="theme-main">
+ <h3>Underweight discretionary models exposed to real-income pressure</h3>
+ <div class="badges">
+ <span class="badge badge-destructive">Bearish</span>
+ <span class="badge badge-outline">Low conviction</span>
+ <span class="badge badge-outline">12 months</span>
+ <span class="badge badge-ghost">US_20261030_06</span>
+ </div>
+ </div>
+ </header>
+ <div class="prose"><p>Rank 6. Underweight businesses requiring accelerating discretionary volumes but lacking pricing power or balance-sheet flexibility. <span class="tag">EVIDENCE</span> BEA&#x27;s October 29 September report showed nearly flat real consumption and declining real disposable income. The lagged July SLOOS reported tighter card standards. updated August 3 and generally covering Q2. <span class="tag">INTERPRETATION</span> nominal spending growth may conceal weaker unit demand, but aggregate Q3 strength is important counterevidence. <span class="tag">EXPECTATIONS</span> valuation and positioning are unverified; this is a vulnerability screen, not proof of mispricing. <span class="tag">IMPLEMENTATION</span> targeted exclusions or underweights, not a blanket consumer-sector short. <span class="tag">SCENARIOS</span> useful in the bear case, vulnerable to real-income recovery in the bull case. <span class="tag">RANK RATIONALE</span> plausible downside asymmetry but limited confirmation from one monthly observation.</p></div>
+ <div class="fields">
+ <div class="field"><p class="kicker">Key drivers</p><ul><li>Real purchasing-power pressure.</li>
+<li>Consumer credit availability.</li>
+<li>Promotional competition where demand is discretionary.</li></ul></div>
+ <div class="field"><p class="kicker">Beneficiary exposures</p><ul><li>Low-cost essential-goods distribution with sound unit economics.</li>
+<li>Repair and maintenance alternatives to major purchases.</li>
+<li>Cash-generative businesses with low fixed-cost burdens.</li></ul></div>
+ <div class="field"><p class="kicker">Disadvantaged exposures</p><ul><li>Low-margin discretionary retailers with excess inventory.</li>
+<li>Discretionary services with inflexible labor and lease costs.</li>
+<li>Consumer businesses reliant on nonprime financing.</li></ul></div>
+ <div class="field"><p class="kicker">Financial impact</p><p>Downside mechanism: weaker unit volumes and discounting reduce gross profit; fixed costs magnify the earnings decline. Financing-linked businesses may also face higher provisions and lower originations.</p></div>
+ <div class="field"><p class="kicker">Catalysts</p><ul><li>Holiday-season unit sales and promotional intensity.</li>
+<li>Quarterly guidance and inventory disclosures.</li>
+<li>Further real-income and lending updates.</li></ul></div>
+ <div class="field"><p class="kicker">Risks</p><ul><li>Energy disinflation restoring purchasing power.</li>
+<li>Stronger employment and wage gains.</li>
+<li>Low valuations already discounting weakness.</li></ul></div>
+ <div class="field"><p class="kicker">Invalidation</p><ul><li>Sustained improvement in real income and consumption.</li>
+<li>Stable full-price sales and improving inventory turnover.</li>
+<li>Credit performance and underwriting capacity improving materially.</li></ul></div>
+ <div class="field"><p class="kicker">Monitoring</p><ul><li>Real PCE and real disposable income.</li>
+<li>Transactions and units versus price-driven sales growth.</li>
+<li>Markdowns, inventories and operating margins.</li>
+<li>Delinquencies and financing approval rates.</li></ul></div>
+ </div>
+ <div class="theme-meta">
+ <div class="field"><p class="kicker">Sectors</p><div class="badges"><span class="badge badge-outline">Consumer Discretionary</span> <span class="badge badge-outline">Consumer Staples</span> <span class="badge badge-outline">Financials</span></div></div>
+ <div class="field"><p class="kicker">Industries</p><div class="badges"><span class="badge badge-outline">Specialty Retail</span> <span class="badge badge-outline">Restaurants</span> <span class="badge badge-outline">Consumer Finance</span> <span class="badge badge-outline">Household Durables</span></div></div>
+ <div class="field"><p class="kicker">Search queries</p><div class="queries"><span class="query">consumer discretionary unit sales promotions inventory Q3 2026</span> <span class="query">real disposable income consumer credit delinquencies September 2026</span></div></div>
+ </div>
+</article>
+
+
+<article class="card theme" id="market-US_20261030_07">
+ <header class="theme-head">
+ <div class="rank">7</div>
+ <div class="theme-main">
+ <h3>Avoid near-term refinancing dependence without organic cash coverage</h3>
+ <div class="badges">
+ <span class="badge badge-destructive">Bearish</span>
+ <span class="badge badge-outline">Low conviction</span>
+ <span class="badge badge-outline">12 months</span>
+ <span class="badge badge-ghost">US_20261030_07</span>
+ </div>
+ </div>
+ </header>
+ <div class="prose"><p>Rank 7. Underweight businesses whose equity case requires materially cheaper refinancing, particularly where weak cash flow coincides with near-term maturities. <span class="tag">EVIDENCE</span> Treasury&#x27;s October 29 ten- and thirty-year yields were 4.98% and 5.32%. However, high-yield spreads narrowed to 314 basis points on October 28, arguing against a generalized funding crisis. updated October 29. <span class="tag">EXPECTATIONS</span> financing risk is observable, but borrower-level mispricing is unverified. <span class="tag">IMPLEMENTATION</span> balance-sheet exclusions and quality tilts within equity ETFs; no blanket small-cap or REIT short. <span class="tag">SCENARIOS</span> most useful during tightening or credit stress; vulnerable to disinflation and easier financing. <span class="tag">RANK RATIONALE</span> sound risk control, but weak evidence for broad bearish timing. Shared rate exposure with theme 6 should not be counted as independent diversification.</p></div>
+ <div class="fields">
+ <div class="field"><p class="kicker">Key drivers</p><ul><li>Debt maturity schedules and all-in refinancing costs.</li>
+<li>Cash interest coverage and covenant capacity.</li>
+<li>Availability of asset sales or internally funded deleveraging.</li></ul></div>
+ <div class="field"><p class="kicker">Beneficiary exposures</p><ul><li>Net-cash businesses and firms with well-laddered fixed-rate debt.</li>
+<li>Competitors able to fund investment internally.</li>
+<li>Acquirers with capacity to purchase assets without stretching leverage.</li></ul></div>
+ <div class="field"><p class="kicker">Disadvantaged exposures</p><ul><li>Highly leveraged businesses with near-term maturities.</li>
+<li>Property owners facing both refinancing needs and weak occupancy.</li>
+<li>Unprofitable businesses requiring repeated equity issuance.</li></ul></div>
+ <div class="field"><p class="kicker">Financial impact</p><p>Downside mechanism: higher interest expense reduces equity cash flow; refinancing shortfalls may force asset sales or dilution. The effect depends on actual debt terms, not simply company size or sector.</p></div>
+ <div class="field"><p class="kicker">Catalysts</p><ul><li>Refinancing transactions and covenant amendments.</li>
+<li>Debt maturity disclosures and credit-rating actions.</li>
+<li>Asset sales or equity issuance needed to bridge funding gaps.</li></ul></div>
+ <div class="field"><p class="kicker">Risks</p><ul><li>Falling risk-free yields and continued spread compression.</li>
+<li>Unexpectedly strong operating cash flow.</li>
+<li>Asset values supporting inexpensive refinancing.</li></ul></div>
+ <div class="field"><p class="kicker">Invalidation</p><ul><li>Maturities refinanced on sustainable terms without dilution.</li>
+<li>Durable improvement in interest coverage and free cash flow.</li>
+<li>Material deleveraging eliminating external funding dependence.</li></ul></div>
+ <div class="field"><p class="kicker">Monitoring</p><ul><li>Debt due within 24 months and available liquidity.</li>
+<li>Fixed versus floating debt and hedge expirations.</li>
+<li>Cash interest coverage, covenants and refinancing proceeds.</li>
+<li>Asset-sale discounts and equity dilution.</li></ul></div>
+ </div>
+ <div class="theme-meta">
+ <div class="field"><p class="kicker">Sectors</p><div class="badges"><span class="badge badge-outline">Real Estate</span> <span class="badge badge-outline">Industrials</span> <span class="badge badge-outline">Consumer Discretionary</span> <span class="badge badge-outline">Information Technology</span></div></div>
+ <div class="field"><p class="kicker">Industries</p><div class="badges"><span class="badge badge-outline">Office REITs</span> <span class="badge badge-outline">Diversified REITs</span> <span class="badge badge-outline">Leveraged Services</span> <span class="badge badge-outline">Unprofitable Software</span></div></div>
+ <div class="field"><p class="kicker">Search queries</p><div class="queries"><span class="query">2026 corporate debt maturity liquidity interest coverage refinancing</span> <span class="query">REIT debt maturity occupancy refinancing proceeds 2026</span></div></div>
+ </div>
+</article>
+</div>
+ </section>
+
+ <section class="section" id="market-scenarios">
+ <p class="section-label">Scenarios</p>
+ <p class="lede">Analytical scenarios. The snapshot assigns no probabilities or portfolio weights.</p>
+ <div class="scenarios">
+<article class="card scenario scenario-base">
+ <h3>Base case</h3>
+ <div class="prose"><p>Central analytical scenario, not a consensus forecast: expansion continues but becomes less uniform as investment and contracted spending offset softer household purchasing power. Inflation moderates only gradually; monetary policy remains cautious and substantial early easing is not assumed. Earnings grow unevenly, with cash conversion determining relative performance more than multiple expansion. Themes 1–4 are favored selectively; theme 5 is a limited hedge, while themes 6–7 remain targeted underweights rather than broad shorts. Electrical suppliers and production-oriented defense outperform businesses dependent on cheap financing or accelerating discretionary volumes. Transition toward the bull case would require sustained disinflation, recovering real income and broader earnings delivery. Transition toward the bear case would require persistent spending weakness, worsening labor indicators, order cancellations and credit deterioration. No probability is assigned because the research does not provide a defensible calibrated scenario model.</p></div>
+</article>
+
+
+<article class="card scenario scenario-bull">
+ <h3>Bull case</h3>
+ <div class="prose"><p>Analytical scenario: energy flows normalize, real household income improves, investment remains productive and inflation falls without recession. Lower inflation permits eventual monetary easing and declining long-term yields. Earnings growth broadens beyond current leaders and financing conditions improve. Enterprise platforms, electrical suppliers and medical procedure exposures benefit; financially sound small and midcaps could participate more broadly. The oil hedge and bearish consumer/refinancing tilts are most vulnerable. Defense may continue growing operationally but lag a broad risk-on market. Confirmation would include several months of improving real consumption, lower underlying inflation, broader revenue and cash-flow growth, and refinancing completed without dilution. A decline in inflation caused solely by collapsing demand would not validate this scenario.</p></div>
+</article>
+
+
+<article class="card scenario scenario-bear">
+ <h3>Bear case</h3>
+ <div class="prose"><p>Analytical scenario: prolonged energy disruption sustains inflation while purchasing power weakens; monetary policy stays restrictive or tightens further, and investment commitments are revised down. Earnings estimates fall as operating leverage, interest expense and credit losses compound the slowdown; equity multiples also face pressure. Weak discretionary consumption and refinancing-dependent models are most exposed, while themes 6–7 provide relative protection through underweights. Defense and recurring medical supplies may be relatively resilient, although neither is immune to equity drawdowns. Domestic oil production can help during the initial supply shock but would lose protection if demand destruction subsequently dominates. Electrical infrastructure and enterprise AI become correlated downside exposures if customer spending contracts. Warning indicators include sustained real-income weakness, worsening employment, rising credit spreads, cancellations and deteriorating cash conversion. Falling energy prices accompanied by improving—not collapsing—demand would signal movement back toward the base case.</p></div>
+</article>
+</div>
+ </section>
+ </main>
+  <main data-view="portfolio" hidden id="portfolio-top">
+ <header>
+ <p class="page-kicker">
+ <span>30 October 2026</span>
+ <span aria-hidden="true">·</span>
+ <span>portfolio.json</span>
+ <span aria-hidden="true">·</span>
+ <span class="badge badge-positive">Construction complete</span></p>
+ <h1>Concentrated twelve-month portfolio</h1>
+ </header>
+ <section class="stats" aria-label="Portfolio figures"><div class="stat"><p class="stat-value">20</p><p class="stat-label">Holdings</p></div>
+<div class="stat"><p class="stat-value">100%</p><p class="stat-label">Allocated</p></div>
+<div class="stat"><p class="stat-value">12 mo</p><p class="stat-label">Horizon</p></div>
+<div class="stat"><p class="stat-value">8%</p><p class="stat-label">Largest · MSFT</p></div>
+<div class="stat"><p class="stat-value">2%</p><p class="stat-label">Smallest · VRT</p></div>
+<div class="stat"><p class="stat-value">4</p><p class="stat-label">Sectors</p></div></section>
+ <section class="section" id="portfolio-summary">
+ <p class="section-label">Strategy</p>
+ <p class="lede">Construct a concentrated portfolio around five earnings mechanisms: electrical infrastructure conversion, missile-defense production, procedure-linked medical technology, enterprise AI monetization, and domestic oil exposure. Electrical infrastructure and enterprise software are structural opportunities with cyclical spending risk; defense offers contracted production exposure; medical technology adds relatively defensive utilization-driven revenues; oil supplies a conditional inflation hedge. The supplied macro outlook is treated as the scenario input, not independently verified economic data.</p>
+ <div class="card prose"><p>Allocate 35% to Industrials, 30% to Health Care, 22% to Information Technology, and 13% to Energy. Electrical infrastructure receives 20%, defense 15%, medical procedures 30%, enterprise platforms 22%, and oil-linked businesses 13%. The combined electrical/software allocation is explicitly constrained to 42%, rather than counted as independent diversification. Larger holdings emphasize diversified distribution, installed bases, recurring consumption, and distinct customers. Smaller positions contain project execution, customer concentration, and commodity risks.</p>
+<p>Avoid discretionary-demand recovery trades, refinancing-dependent models, speculative infrastructure development, and unproven AI applications. Neither strong thematic alignment nor public backlog establishes security-level cheapness. All weights are proposed research allocations, conditional on valuation and financial diligence before execution; portfolio completeness describes construction, not trading readiness.</p>
+<p>Business descriptions and competitive positions come from retrieved company files. Earnings mechanisms, catalysts, invalidation tests, and scores are analytical judgments, not reported forecasts. Valuation is unassessed for every holding. Scores proportionally reweight the remaining factors and incorporate conservative financial-resilience assumptions because current balance sheets and cash-flow statements were not supplied. The objective is complementary earnings delivery over twelve months, not dependence on falling rates or broad multiple expansion.</p></div>
+ </section>
+ <section class="section" id="portfolio-allocation">
+ <p class="section-label">Allocation</p>
+ <div class="split">
+ <article class="card">
+ <h3>Sectors</h3>
+ <div class="alloc-list" id="portfolio-sectors">
+<div class="alloc">
+ <div class="alloc-top">
+ <span>Industrials</span>
+ <span>35%</span>
+ </div>
+ <div class="track" aria-hidden="true"><div class="fill" style="width:35.0%"></div></div>
+</div>
+
+<div class="alloc">
+ <div class="alloc-top">
+ <span>Health Care</span>
+ <span>30%</span>
+ </div>
+ <div class="track" aria-hidden="true"><div class="fill" style="width:30.0%"></div></div>
+</div>
+
+<div class="alloc">
+ <div class="alloc-top">
+ <span>Information Technology</span>
+ <span>22%</span>
+ </div>
+ <div class="track" aria-hidden="true"><div class="fill" style="width:22.0%"></div></div>
+</div>
+
+<div class="alloc">
+ <div class="alloc-top">
+ <span>Energy</span>
+ <span>13%</span>
+ </div>
+ <div class="track" aria-hidden="true"><div class="fill" style="width:13.0%"></div></div>
+</div>
+</div>
+ </article>
+ <article class="card">
+ <h3>Themes</h3>
+ <div class="alloc-list" id="portfolio-themes">
+<div class="alloc">
+ <div class="alloc-top">
+ <span>Procedure-linked medical technology</span>
+ <span>30%</span>
+ </div>
+ <div class="track" aria-hidden="true"><div class="fill" style="width:30.0%"></div></div>
+</div>
+
+<div class="alloc">
+ <div class="alloc-top">
+ <span>Enterprise AI monetization</span>
+ <span>22%</span>
+ </div>
+ <div class="track" aria-hidden="true"><div class="fill" style="width:22.0%"></div></div>
+</div>
+
+<div class="alloc">
+ <div class="alloc-top">
+ <span>Electrical infrastructure conversion</span>
+ <span>20%</span>
+ </div>
+ <div class="track" aria-hidden="true"><div class="fill" style="width:20.0%"></div></div>
+</div>
+
+<div class="alloc">
+ <div class="alloc-top">
+ <span>Missile-defense production</span>
+ <span>15%</span>
+ </div>
+ <div class="track" aria-hidden="true"><div class="fill" style="width:15.0%"></div></div>
+</div>
+
+<div class="alloc">
+ <div class="alloc-top">
+ <span>Domestic oil and royalty inflation hedge</span>
+ <span>13%</span>
+ </div>
+ <div class="track" aria-hidden="true"><div class="fill" style="width:13.0%"></div></div>
+</div>
+</div>
+ </article>
+ </div>
+ </section>
+ <section class="section" id="portfolio-holdings">
+ <p class="section-label">Holdings <span class="count">20</span></p>
+ 
+<div class="table-card">
+ <table>
+ <thead>
+ <tr>
+ <th>Ticker</th>
+ <th>Company</th>
+ <th>Theme</th>
+ <th class="hide-narrow">Sector</th>
+ <th class="num">Weight</th>
+ <th class="num">Score</th>
+ </tr>
+ </thead>
+ <tbody>
+ 
+<tr>
+ <td><a class="ticker" href="#portfolio-MSFT">MSFT</a></td>
+ <td>Microsoft Corporation</td>
+ <td>Enterprise AI monetization</td>
+ <td class="hide-narrow">Information Technology</td>
+ <td class="num">8%</td>
+ <td class="num">88</td>
+</tr>
+
+<tr>
+ <td><a class="ticker" href="#portfolio-ISRG">ISRG</a></td>
+ <td>Intuitive Surgical, Inc.</td>
+ <td>Procedure-linked medical technology</td>
+ <td class="hide-narrow">Health Care</td>
+ <td class="num">7%</td>
+ <td class="num">89</td>
+</tr>
+
+<tr>
+ <td><a class="ticker" href="#portfolio-ETN">ETN</a></td>
+ <td>Eaton Corporation plc</td>
+ <td>Electrical infrastructure conversion</td>
+ <td class="hide-narrow">Industrials</td>
+ <td class="num">6%</td>
+ <td class="num">86</td>
+</tr>
+
+<tr>
+ <td><a class="ticker" href="#portfolio-BSX">BSX</a></td>
+ <td>Boston Scientific Corporation</td>
+ <td>Procedure-linked medical technology</td>
+ <td class="hide-narrow">Health Care</td>
+ <td class="num">6%</td>
+ <td class="num">85</td>
+</tr>
+
+<tr>
+ <td><a class="ticker" href="#portfolio-HUBB">HUBB</a></td>
+ <td>Hubbell Incorporated</td>
+ <td>Electrical infrastructure conversion</td>
+ <td class="hide-narrow">Industrials</td>
+ <td class="num">6%</td>
+ <td class="num">85</td>
+</tr>
+
+<tr>
+ <td><a class="ticker" href="#portfolio-LMT">LMT</a></td>
+ <td>Lockheed Martin Corporation</td>
+ <td>Missile-defense production</td>
+ <td class="hide-narrow">Industrials</td>
+ <td class="num">6%</td>
+ <td class="num">84</td>
+</tr>
+
+<tr>
+ <td><a class="ticker" href="#portfolio-SYK">SYK</a></td>
+ <td>Stryker Corporation</td>
+ <td>Procedure-linked medical technology</td>
+ <td class="hide-narrow">Health Care</td>
+ <td class="num">6%</td>
+ <td class="num">83</td>
+</tr>
+
+<tr>
+ <td><a class="ticker" href="#portfolio-MDT">MDT</a></td>
+ <td>Medtronic plc</td>
+ <td>Procedure-linked medical technology</td>
+ <td class="hide-narrow">Health Care</td>
+ <td class="num">6%</td>
+ <td class="num">79</td>
+</tr>
+
+<tr>
+ <td><a class="ticker" href="#portfolio-NOW">NOW</a></td>
+ <td>ServiceNow, Inc.</td>
+ <td>Enterprise AI monetization</td>
+ <td class="hide-narrow">Information Technology</td>
+ <td class="num">5%</td>
+ <td class="num">85</td>
+</tr>
+
+<tr>
+ <td><a class="ticker" href="#portfolio-STE">STE</a></td>
+ <td>STERIS plc</td>
+ <td>Procedure-linked medical technology</td>
+ <td class="hide-narrow">Health Care</td>
+ <td class="num">5%</td>
+ <td class="num">83</td>
+</tr>
+
+<tr>
+ <td><a class="ticker" href="#portfolio-EOG">EOG</a></td>
+ <td>EOG Resources, Inc.</td>
+ <td>Domestic oil and royalty inflation hedge</td>
+ <td class="hide-narrow">Energy</td>
+ <td class="num">5%</td>
+ <td class="num">82</td>
+</tr>
+
+<tr>
+ <td><a class="ticker" href="#portfolio-COP">COP</a></td>
+ <td>ConocoPhillips</td>
+ <td>Domestic oil and royalty inflation hedge</td>
+ <td class="hide-narrow">Energy</td>
+ <td class="num">5%</td>
+ <td class="num">80</td>
+</tr>
+
+<tr>
+ <td><a class="ticker" href="#portfolio-CRM">CRM</a></td>
+ <td>Salesforce, Inc.</td>
+ <td>Enterprise AI monetization</td>
+ <td class="hide-narrow">Information Technology</td>
+ <td class="num">5%</td>
+ <td class="num">80</td>
+</tr>
+
+<tr>
+ <td><a class="ticker" href="#portfolio-RTX">RTX</a></td>
+ <td>RTX Corporation</td>
+ <td>Missile-defense production</td>
+ <td class="hide-narrow">Industrials</td>
+ <td class="num">5%</td>
+ <td class="num">80</td>
+</tr>
+
+<tr>
+ <td><a class="ticker" href="#portfolio-SAP">SAP</a></td>
+ <td>SAP SE Sponsored ADR</td>
+ <td>Enterprise AI monetization</td>
+ <td class="hide-narrow">Information Technology</td>
+ <td class="num">4%</td>
+ <td class="num">83</td>
+</tr>
+
+<tr>
+ <td><a class="ticker" href="#portfolio-LHX">LHX</a></td>
+ <td>L3Harris Technologies, Inc.</td>
+ <td>Missile-defense production</td>
+ <td class="hide-narrow">Industrials</td>
+ <td class="num">4%</td>
+ <td class="num">81</td>
+</tr>
+
+<tr>
+ <td><a class="ticker" href="#portfolio-TPL">TPL</a></td>
+ <td>Texas Pacific Land Corporation</td>
+ <td>Domestic oil and royalty inflation hedge</td>
+ <td class="hide-narrow">Energy</td>
+ <td class="num">3%</td>
+ <td class="num">81</td>
+</tr>
+
+<tr>
+ <td><a class="ticker" href="#portfolio-GEV">GEV</a></td>
+ <td>GE Vernova Inc.</td>
+ <td>Electrical infrastructure conversion</td>
+ <td class="hide-narrow">Industrials</td>
+ <td class="num">3%</td>
+ <td class="num">79</td>
+</tr>
+
+<tr>
+ <td><a class="ticker" href="#portfolio-NVT">NVT</a></td>
+ <td>nVent Electric plc</td>
+ <td>Electrical infrastructure conversion</td>
+ <td class="hide-narrow">Industrials</td>
+ <td class="num">3%</td>
+ <td class="num">79</td>
+</tr>
+
+<tr>
+ <td><a class="ticker" href="#portfolio-VRT">VRT</a></td>
+ <td>Vertiv Holdings Co</td>
+ <td>Electrical infrastructure conversion</td>
+ <td class="hide-narrow">Industrials</td>
+ <td class="num">2%</td>
+ <td class="num">81</td>
+</tr>
+
+ </tbody>
+ </table>
+</div>
+
+ <div class="stack">
+<article class="card holding" id="portfolio-MSFT">
+ <header class="holding-head">
+ <a class="ticker" href="#portfolio-MSFT">MSFT</a>
+ <div class="holding-main">
+ <div class="holding-title">
+ <h3>Microsoft Corporation</h3>
+ <div class="holding-figures">
+ <span class="figure">8%</span>
+ <span class="figure-label">weight</span>
+ <span class="figure">88</span>
+ <span class="figure-label">score</span>
+ </div>
+ </div>
+ <div class="badges">
+ <span class="badge badge-secondary">Enterprise AI monetization</span>
+ <span class="badge badge-outline">Information Technology</span>
+ <span class="badge badge-outline">Systems Software</span>
+ </div>
+ </div>
+ </header>
+ <div class="prose"><p>Over twelve months, cloud consumption and enterprise upselling can translate installed-base distribution into earnings. Investment success requires cash returns after infrastructure spending, not simply higher AI revenue.</p></div>
+ <p class="note">Provides productivity software, Azure cloud infrastructure, operating systems, enterprise applications, developer tools, gaming, and advertising. Reported business groupings include Productivity and Business Processes, Intelligent Cloud, and More Personal Computing. The file supports ecosystem scale, switching costs, and enterprise distribution.</p>
+ <p class="note"><span class="tag">Macro</span> Investment-led corporate demand supports cloud workloads and productivity tools without requiring accelerating household consumption or immediate monetary easing.</p>
+ <div class="fields">
+ <div class="field"><p class="kicker">Growth drivers</p><ul><li>Enterprise cloud migration and workload consumption</li>
+<li>Commercial productivity renewals and upselling</li>
+<li>Paid AI adoption through existing enterprise relationships</li></ul></div>
+ <div class="field"><p class="kicker">Competitive advantages</p><ul><li>Integrated product ecosystem</li>
+<li>Large installed base and switching costs</li>
+<li>Global distribution and scale economies</li></ul></div>
+ <div class="field"><p class="kicker">Catalysts</p><ul><li>Quarterly evidence of paid cloud and AI usage converting to operating profit</li>
+<li>Renewal and expansion disclosures</li>
+<li>Cash generation improving relative to capital and lease commitments</li></ul></div>
+ <div class="field"><p class="kicker">Risks</p><ul><li>AI infrastructure spending and depreciation outrun monetization</li>
+<li>Cloud competition and pricing pressure</li>
+<li>Cybersecurity incidents or regulatory intervention</li></ul></div>
+ <div class="field"><p class="kicker">Invalidation</p><ul><li>Persistent deterioration in cash returns despite revenue growth</li>
+<li>Weak paid usage or renewals undermine the monetization thesis</li></ul></div>
+ <div class="field"><p class="kicker">Weight rationale</p><p>Largest allocation reflects diversified enterprise distribution and recurring workloads, not verified cheapness. Eight percent is the position ceiling. Judgmental factor scores T/G/Q/F/P: 94/88/96/70/85; financial strength remains unverified.</p></div>
+ <div class="field"><p class="kicker">Valuation</p><p>Not assessed: no contemporaneous security-level price, earnings multiple, cash-flow yield, or enterprise value was verified.</p></div>
+ </div>
+</article>
+
+
+<article class="card holding" id="portfolio-ISRG">
+ <header class="holding-head">
+ <a class="ticker" href="#portfolio-ISRG">ISRG</a>
+ <div class="holding-main">
+ <div class="holding-title">
+ <h3>Intuitive Surgical, Inc.</h3>
+ <div class="holding-figures">
+ <span class="figure">7%</span>
+ <span class="figure-label">weight</span>
+ <span class="figure">89</span>
+ <span class="figure-label">score</span>
+ </div>
+ </div>
+ <div class="badges">
+ <span class="badge badge-secondary">Procedure-linked medical technology</span>
+ <span class="badge badge-outline">Health Care</span>
+ <span class="badge badge-outline">Health Care Equipment</span>
+ </div>
+ </div>
+ </header>
+ <div class="prose"><p>Procedure utilization provides a clearer twelve-month earnings mechanism than equipment placements alone. Recurring instruments and service should support growth if clinical adoption persists.</p></div>
+ <p class="note">Develops da Vinci surgical systems, the Ion lung-biopsy platform, proprietary instruments and accessories, and maintenance and training services. Hospitals and ambulatory surgery centers generate recurring instrument demand as procedures increase.</p>
+ <p class="note"><span class="tag">Macro</span> Clinical utilization diversifies the portfolio away from discretionary consumer demand and infrastructure capital budgets, although system placements remain hospital-budget sensitive.</p>
+ <div class="fields">
+ <div class="field"><p class="kicker">Growth drivers</p><ul><li>Procedure growth and instrument consumption</li>
+<li>Installed-base service demand</li>
+<li>International adoption and additional clinical applications</li></ul></div>
+ <div class="field"><p class="kicker">Competitive advantages</p><ul><li>Proprietary robotic ecosystem</li>
+<li>Clinical training and support network</li>
+<li>Installed-base switching costs</li></ul></div>
+ <div class="field"><p class="kicker">Catalysts</p><ul><li>Quarterly procedure and utilization disclosures</li>
+<li>Instrument growth independent of placement volatility</li>
+<li>Evidence of sustained customer economics</li></ul></div>
+ <div class="field"><p class="kicker">Risks</p><ul><li>Procedure slowdown or reimbursement pressure</li>
+<li>Competing platforms and pricing pressure</li>
+<li>Product liability and legal costs, including the settlement identified in the supplied analysis</li></ul></div>
+ <div class="field"><p class="kicker">Invalidation</p><ul><li>Installed-base expansion fails to produce utilization growth</li>
+<li>Pricing or reimbursement deterioration offsets procedure gains</li></ul></div>
+ <div class="field"><p class="kicker">Weight rationale</p><p>Seven percent recognizes the clearest recurring-procedure business model in the retrieved medical universe; valuation and legal uncertainty prevent an eight-percent allocation. T/G/Q/F/P: 96/88/95/70/90.</p></div>
+ <div class="field"><p class="kicker">Valuation</p><p>Not assessed; recurring revenue quality does not establish an attractive entry multiple.</p></div>
+ </div>
+</article>
+
+
+<article class="card holding" id="portfolio-ETN">
+ <header class="holding-head">
+ <a class="ticker" href="#portfolio-ETN">ETN</a>
+ <div class="holding-main">
+ <div class="holding-title">
+ <h3>Eaton Corporation plc</h3>
+ <div class="holding-figures">
+ <span class="figure">6%</span>
+ <span class="figure-label">weight</span>
+ <span class="figure">86</span>
+ <span class="figure-label">score</span>
+ </div>
+ </div>
+ <div class="badges">
+ <span class="badge badge-secondary">Electrical infrastructure conversion</span>
+ <span class="badge badge-outline">Industrials</span>
+ <span class="badge badge-outline">Electrical Equipment</span>
+ </div>
+ </div>
+ </header>
+ <div class="prose"><p>Electrical shipments, product mix, and manufacturing productivity can convert infrastructure demand into earnings during the investment horizon, with aerospace and other applications broadening the demand base.</p></div>
+ <p class="note">Supplies power distribution, circuit protection, electrical services, aerospace components, and mobility systems. Customers include utilities, data centers, industrial businesses, aircraft manufacturers, and vehicle OEMs.</p>
+ <p class="note"><span class="tag">Macro</span> Grid reliability, industrial electrification, and funded data-center investment fit an investment-led expansion.</p>
+ <div class="fields">
+ <div class="field"><p class="kicker">Growth drivers</p><ul><li>Electrical infrastructure shipments</li>
+<li>Grid modernization and power-reliability spending</li>
+<li>Pricing, mix, productivity, and aftermarket activity</li></ul></div>
+ <div class="field"><p class="kicker">Competitive advantages</p><ul><li>Global manufacturing and distribution</li>
+<li>Application engineering expertise</li>
+<li>Diversified mission-critical installed base</li></ul></div>
+ <div class="field"><p class="kicker">Catalysts</p><ul><li>Order-to-shipment conversion</li>
+<li>Factory throughput improvements</li>
+<li>Operating cash flow keeping pace with earnings</li></ul></div>
+ <div class="field"><p class="kicker">Risks</p><ul><li>Data-center customer deferrals</li>
+<li>Input inflation and manufacturing bottlenecks</li>
+<li>Weak industrial or vehicle demand</li></ul></div>
+ <div class="field"><p class="kicker">Invalidation</p><ul><li>Sustained electrical cancellations rather than normal backlog conversion</li>
+<li>Revenue increases accompanied by persistent cash-conversion deterioration</li></ul></div>
+ <div class="field"><p class="kicker">Weight rationale</p><p>Core six-percent electrical holding because of diversified applications and engineering scale. Its overlapping AI exposure and unverified valuation limit sizing. T/G/Q/F/P: 95/88/90/65/80.</p></div>
+ <div class="field"><p class="kicker">Valuation</p><p>Not assessed; the supplied order-growth evidence is not valuation evidence.</p></div>
+ </div>
+</article>
+
+
+<article class="card holding" id="portfolio-BSX">
+ <header class="holding-head">
+ <a class="ticker" href="#portfolio-BSX">BSX</a>
+ <div class="holding-main">
+ <div class="holding-title">
+ <h3>Boston Scientific Corporation</h3>
+ <div class="holding-figures">
+ <span class="figure">6%</span>
+ <span class="figure-label">weight</span>
+ <span class="figure">85</span>
+ <span class="figure-label">score</span>
+ </div>
+ </div>
+ <div class="badges">
+ <span class="badge badge-secondary">Procedure-linked medical technology</span>
+ <span class="badge badge-outline">Health Care</span>
+ <span class="badge badge-outline">Health Care Equipment</span>
+ </div>
+ </div>
+ </header>
+ <div class="prose"><p>Electrophysiology and other minimally invasive procedure adoption can support utilization-driven revenue and earnings over twelve months.</p></div>
+ <p class="note">Provides interventional devices across cardiovascular medicine, endoscopy, urology, and neuromodulation. Its Cardiovascular and MedSurg businesses serve hospitals, physicians, and ambulatory surgery centers.</p>
+ <p class="note"><span class="tag">Macro</span> Clinical procedure demand reduces dependence on a recovery in discretionary purchasing, although reimbursement and hospital economics remain important.</p>
+ <div class="fields">
+ <div class="field"><p class="kicker">Growth drivers</p><ul><li>Electrophysiology adoption</li>
+<li>Structural-heart and interventional procedure penetration</li>
+<li>International commercial expansion</li></ul></div>
+ <div class="field"><p class="kicker">Competitive advantages</p><ul><li>Physician relationships</li>
+<li>Broad interventional portfolio</li>
+<li>Clinical and regulatory expertise</li></ul></div>
+ <div class="field"><p class="kicker">Catalysts</p><ul><li>Procedure-linked product growth</li>
+<li>Clinical adoption and launch execution</li>
+<li>Growth accompanied by stable pricing and margins</li></ul></div>
+ <div class="field"><p class="kicker">Risks</p><ul><li>Regulatory or product-liability events</li>
+<li>Competitive pricing and procedure-share losses</li>
+<li>Acquisition or supply-chain execution problems</li></ul></div>
+ <div class="field"><p class="kicker">Invalidation</p><ul><li>Procedure growth no longer translates into product revenue</li>
+<li>Quality or competitive setbacks materially impair adoption</li></ul></div>
+ <div class="field"><p class="kicker">Weight rationale</p><p>Six percent provides cardiovascular and minimally invasive exposure distinct from surgical robotics and orthopedic implants. T/G/Q/F/P: 94/90/88/60/85.</p></div>
+ <div class="field"><p class="kicker">Valuation</p><p>Not assessed; growth expectations embedded in the price are unknown.</p></div>
+ </div>
+</article>
+
+
+<article class="card holding" id="portfolio-HUBB">
+ <header class="holding-head">
+ <a class="ticker" href="#portfolio-HUBB">HUBB</a>
+ <div class="holding-main">
+ <div class="holding-title">
+ <h3>Hubbell Incorporated</h3>
+ <div class="holding-figures">
+ <span class="figure">6%</span>
+ <span class="figure-label">weight</span>
+ <span class="figure">85</span>
+ <span class="figure-label">score</span>
+ </div>
+ </div>
+ <div class="badges">
+ <span class="badge badge-secondary">Electrical infrastructure conversion</span>
+ <span class="badge badge-outline">Industrials</span>
+ <span class="badge badge-outline">Electrical Equipment</span>
+ </div>
+ </div>
+ </header>
+ <div class="prose"><p>Utility infrastructure shipments and specification-based products offer a twelve-month earnings path that is not exclusively dependent on AI data-center construction.</p></div>
+ <p class="note">Manufactures utility transmission and distribution products, substation equipment, connectors, wiring devices, and related electrical products through Utility Solutions and Electrical Solutions. Customers include utilities, contractors, and distributors.</p>
+ <p class="note"><span class="tag">Macro</span> Grid modernization and reliability investment support demand despite uneven consumption and elevated financing costs.</p>
+ <div class="fields">
+ <div class="field"><p class="kicker">Growth drivers</p><ul><li>Utility transmission and distribution spending</li>
+<li>Substation and replacement demand</li>
+<li>Product mix and manufacturing efficiency</li></ul></div>
+ <div class="field"><p class="kicker">Competitive advantages</p><ul><li>Specification-based installed positions</li>
+<li>Utility relationships</li>
+<li>Broad distribution and niche brands</li></ul></div>
+ <div class="field"><p class="kicker">Catalysts</p><ul><li>Utility purchasing and shipment updates</li>
+<li>Improving manufacturing throughput</li>
+<li>Margins demonstrating input-cost recovery</li></ul></div>
+ <div class="field"><p class="kicker">Risks</p><ul><li>Utility purchasing pauses</li>
+<li>Commodity inflation and supply disruption</li>
+<li>Construction weakness or acquisition integration problems</li></ul></div>
+ <div class="field"><p class="kicker">Invalidation</p><ul><li>Broad utility order contraction persists</li>
+<li>Pricing and productivity fail to protect margins and cash conversion</li></ul></div>
+ <div class="field"><p class="kicker">Weight rationale</p><p>Six percent balances Eaton with utility-oriented demand rather than adding another narrowly data-center-dependent holding. T/G/Q/F/P: 92/82/90/65/90.</p></div>
+ <div class="field"><p class="kicker">Valuation</p><p>Not assessed; current normalized earnings and trading multiples are missing.</p></div>
+ </div>
+</article>
+
+
+<article class="card holding" id="portfolio-LMT">
+ <header class="holding-head">
+ <a class="ticker" href="#portfolio-LMT">LMT</a>
+ <div class="holding-main">
+ <div class="holding-title">
+ <h3>Lockheed Martin Corporation</h3>
+ <div class="holding-figures">
+ <span class="figure">6%</span>
+ <span class="figure-label">weight</span>
+ <span class="figure">84</span>
+ <span class="figure-label">score</span>
+ </div>
+ </div>
+ <div class="badges">
+ <span class="badge badge-secondary">Missile-defense production</span>
+ <span class="badge badge-outline">Industrials</span>
+ <span class="badge badge-outline">Aerospace &amp; Defense</span>
+ </div>
+ </div>
+ </header>
+ <div class="prose"><p>Missile production and sustainment offer a twelve-month delivery-and-cash-conversion thesis. Total company exposure is broader than interceptors, so backlog alone is insufficient.</p></div>
+ <p class="note">Defense prime serving U.S. and allied governments across aircraft, Missiles and Fire Control, Rotary and Mission Systems, and Space. Products include missile defense, radar, command-and-control systems, and sustainment services.</p>
+ <p class="note"><span class="tag">Macro</span> Contracted government procurement provides a demand driver distinct from household spending and enterprise AI budgets.</p>
+ <div class="fields">
+ <div class="field"><p class="kicker">Growth drivers</p><ul><li>Missile and air-defense deliveries</li>
+<li>Installed-platform sustainment</li>
+<li>Allied procurement and production throughput</li></ul></div>
+ <div class="field"><p class="kicker">Competitive advantages</p><ul><li>Government program relationships</li>
+<li>Regulated technical capabilities</li>
+<li>Installed-base sustainment</li></ul></div>
+ <div class="field"><p class="kicker">Catalysts</p><ul><li>Funded production milestones</li>
+<li>Delivery increases without offsetting program charges</li>
+<li>Improvement in working-capital and cash conversion</li></ul></div>
+ <div class="field"><p class="kicker">Risks</p><ul><li>Appropriation delays or procurement reprioritization</li>
+<li>Program charges and contract-margin volatility</li>
+<li>Supplier shortages constrain production</li></ul></div>
+ <div class="field"><p class="kicker">Invalidation</p><ul><li>Material funded-order cancellations</li>
+<li>Repeated charges or working-capital absorption prevent production growth from generating cash</li></ul></div>
+ <div class="field"><p class="kicker">Weight rationale</p><p>Largest defense position reflects direct missile-system exposure and sustainment, while the six-percent weight recognizes government concentration and execution risk. T/G/Q/F/P: 94/82/88/60/92.</p></div>
+ <div class="field"><p class="kicker">Valuation</p><p>Not assessed; public procurement awards do not establish undiscounted upside.</p></div>
+ </div>
+</article>
+
+
+<article class="card holding" id="portfolio-SYK">
+ <header class="holding-head">
+ <a class="ticker" href="#portfolio-SYK">SYK</a>
+ <div class="holding-main">
+ <div class="holding-title">
+ <h3>Stryker Corporation</h3>
+ <div class="holding-figures">
+ <span class="figure">6%</span>
+ <span class="figure-label">weight</span>
+ <span class="figure">83</span>
+ <span class="figure-label">score</span>
+ </div>
+ </div>
+ <div class="badges">
+ <span class="badge badge-secondary">Procedure-linked medical technology</span>
+ <span class="badge badge-outline">Health Care</span>
+ <span class="badge badge-outline">Health Care Equipment</span>
+ </div>
+ </div>
+ </header>
+ <div class="prose"><p>Orthopedic and outpatient procedure activity, supported by hospital relationships and product adoption, can deliver earnings growth without relying solely on capital-equipment placements.</p></div>
+ <p class="note">Supplies orthopedic implants, surgical equipment, emergency-care products, and neurotechnology. Its portfolio includes recurring disposable and implantable products alongside hospital capital equipment.</p>
+ <p class="note"><span class="tag">Macro</span> Aging-related clinical demand diversifies macro exposure, but elective procedures remain sensitive to patient access and hospital capacity.</p>
+ <div class="fields">
+ <div class="field"><p class="kicker">Growth drivers</p><ul><li>Joint replacement and outpatient procedures</li>
+<li>Utilization of surgical products</li>
+<li>New surgical technology and international adoption</li></ul></div>
+ <div class="field"><p class="kicker">Competitive advantages</p><ul><li>Surgeon relationships</li>
+<li>Orthopedic brand and installed base</li>
+<li>Broad commercial and service network</li></ul></div>
+ <div class="field"><p class="kicker">Catalysts</p><ul><li>Procedure and implant-volume updates</li>
+<li>Product adoption in hospital and outpatient channels</li>
+<li>Margin delivery despite wage and material inflation</li></ul></div>
+ <div class="field"><p class="kicker">Risks</p><ul><li>Elective-procedure deferrals</li>
+<li>Product recalls or reimbursement changes</li>
+<li>Acquisition execution and pricing pressure</li></ul></div>
+ <div class="field"><p class="kicker">Invalidation</p><ul><li>Sustained procedure-share losses</li>
+<li>Recall or pricing problems negate utilization growth</li></ul></div>
+ <div class="field"><p class="kicker">Weight rationale</p><p>Six percent adds orthopedic and surgical breadth; exposure to elective procedures and equipment budgets prevents a larger position. T/G/Q/F/P: 90/85/90/60/85.</p></div>
+ <div class="field"><p class="kicker">Valuation</p><p>Not assessed; no current valuation or acquisition-adjusted cash-flow yield verified.</p></div>
+ </div>
+</article>
+
+
+<article class="card holding" id="portfolio-MDT">
+ <header class="holding-head">
+ <a class="ticker" href="#portfolio-MDT">MDT</a>
+ <div class="holding-main">
+ <div class="holding-title">
+ <h3>Medtronic plc</h3>
+ <div class="holding-figures">
+ <span class="figure">6%</span>
+ <span class="figure-label">weight</span>
+ <span class="figure">79</span>
+ <span class="figure-label">score</span>
+ </div>
+ </div>
+ <div class="badges">
+ <span class="badge badge-secondary">Procedure-linked medical technology</span>
+ <span class="badge badge-outline">Health Care</span>
+ <span class="badge badge-outline">Health Care Equipment</span>
+ </div>
+ </div>
+ </header>
+ <div class="prose"><p>Diversified procedure utilization and launch execution can support earnings while reducing reliance on any single medical platform. The thesis does not assume a turnaround or verified valuation discount.</p></div>
+ <p class="note">Supplies device-based therapies across cardiovascular, neuroscience, medical-surgical, and diabetes care to hospitals, physicians, and surgery centers. The retrieved description supports a broad installed base and global service infrastructure.</p>
+ <p class="note"><span class="tag">Macro</span> Multiple therapeutic categories offer relative resilience against weak discretionary spending.</p>
+ <div class="fields">
+ <div class="field"><p class="kicker">Growth drivers</p><ul><li>Cardiovascular and surgical procedure utilization</li>
+<li>New therapy adoption</li>
+<li>Chronic-disease treatment demand</li></ul></div>
+ <div class="field"><p class="kicker">Competitive advantages</p><ul><li>Diversified therapeutic portfolio</li>
+<li>Hospital and clinical relationships</li>
+<li>Global manufacturing and service scale</li></ul></div>
+ <div class="field"><p class="kicker">Catalysts</p><ul><li>Quarterly utilization and product-launch results</li>
+<li>Evidence that mix and productivity support margins</li>
+<li>Cash conversion accompanying organic growth</li></ul></div>
+ <div class="field"><p class="kicker">Risks</p><ul><li>Product recalls and liability</li>
+<li>Reimbursement or competitive pricing pressure</li>
+<li>Launch execution and currency volatility</li></ul></div>
+ <div class="field"><p class="kicker">Invalidation</p><ul><li>Broad-based share loss persists across therapeutic categories</li>
+<li>Quality issues or pricing erosion offset utilization gains</li></ul></div>
+ <div class="field"><p class="kicker">Weight rationale</p><p>Six percent is justified by therapeutic diversification rather than the highest growth score. It offsets concentration in robotics and electrophysiology; current finances still require verification. T/G/Q/F/P: 84/74/88/60/90.</p></div>
+ <div class="field"><p class="kicker">Valuation</p><p>Not assessed; no cheapness or rerating assumption is made.</p></div>
+ </div>
+</article>
+
+
+<article class="card holding" id="portfolio-NOW">
+ <header class="holding-head">
+ <a class="ticker" href="#portfolio-NOW">NOW</a>
+ <div class="holding-main">
+ <div class="holding-title">
+ <h3>ServiceNow, Inc.</h3>
+ <div class="holding-figures">
+ <span class="figure">5%</span>
+ <span class="figure-label">weight</span>
+ <span class="figure">85</span>
+ <span class="figure-label">score</span>
+ </div>
+ </div>
+ <div class="badges">
+ <span class="badge badge-secondary">Enterprise AI monetization</span>
+ <span class="badge badge-outline">Information Technology</span>
+ <span class="badge badge-outline">Application Software</span>
+ </div>
+ </div>
+ </header>
+ <div class="prose"><p>Workflow expansion and paid automation can support recurring growth. AI is an incremental monetization test, not an assumed independent revenue stream.</p></div>
+ <p class="note">Provides enterprise workflow software spanning IT service management, operations, customer service, HR, security, and low-code applications. Retrieved evidence supports integrated workflows, enterprise distribution, and switching costs, but not quantified incremental AI profitability.</p>
+ <p class="note"><span class="tag">Macro</span> Corporate productivity needs can sustain spending on embedded workflows despite slower hiring and uneven demand.</p>
+ <div class="fields">
+ <div class="field"><p class="kicker">Growth drivers</p><ul><li>Enterprise renewals and expansion</li>
+<li>Cross-department workflow adoption</li>
+<li>Paid automation and AI features</li></ul></div>
+ <div class="field"><p class="kicker">Competitive advantages</p><ul><li>Embedded workflow switching costs</li>
+<li>Cross-functional platform</li>
+<li>Enterprise distribution</li></ul></div>
+ <div class="field"><p class="kicker">Catalysts</p><ul><li>Renewal and paid-expansion disclosures</li>
+<li>Customer evidence of automation economics</li>
+<li>Margin and cash-flow delivery through product transitions</li></ul></div>
+ <div class="field"><p class="kicker">Risks</p><ul><li>Large-vendor competition and feature bundling</li>
+<li>Enterprise purchasing deferrals</li>
+<li>AI transition, implementation, or security failures</li></ul></div>
+ <div class="field"><p class="kicker">Invalidation</p><ul><li>Renewal or expansion deterioration persists</li>
+<li>AI features fail to generate economic paid adoption</li></ul></div>
+ <div class="field"><p class="kicker">Weight rationale</p><p>Five percent captures workflow monetization without another hyperscale infrastructure buildout. Valuation and overlap with enterprise IT budgets limit sizing. T/G/Q/F/P: 92/88/91/65/75.</p></div>
+ <div class="field"><p class="kicker">Valuation</p><p>Not assessed; no current multiple or dilution-adjusted cash yield verified.</p></div>
+ </div>
+</article>
+
+
+<article class="card holding" id="portfolio-STE">
+ <header class="holding-head">
+ <a class="ticker" href="#portfolio-STE">STE</a>
+ <div class="holding-main">
+ <div class="holding-title">
+ <h3>STERIS plc</h3>
+ <div class="holding-figures">
+ <span class="figure">5%</span>
+ <span class="figure-label">weight</span>
+ <span class="figure">83</span>
+ <span class="figure-label">score</span>
+ </div>
+ </div>
+ <div class="badges">
+ <span class="badge badge-secondary">Procedure-linked medical technology</span>
+ <span class="badge badge-outline">Health Care</span>
+ <span class="badge badge-outline">Health Care Equipment</span>
+ </div>
+ </div>
+ </header>
+ <div class="prose"><p>A second-order procedure beneficiary: higher surgical activity and device output support recurring sterile-processing consumables and services without requiring a particular implant or robotic platform to win.</p></div>
+ <p class="note">Provides sterilization, contamination control, consumables, instrument repair, reprocessing, and contract sterilization. Customers include hospitals, surgery centers, device manufacturers, and pharmaceutical and life-science companies.</p>
+ <p class="note"><span class="tag">Macro</span> Infection-prevention requirements and recurring processing needs diversify hospital capital-equipment and product-share risks.</p>
+ <div class="fields">
+ <div class="field"><p class="kicker">Growth drivers</p><ul><li>Procedure-linked processing volumes</li>
+<li>Consumables and installed-base service</li>
+<li>Outsourced sterilization demand</li></ul></div>
+ <div class="field"><p class="kicker">Competitive advantages</p><ul><li>Regulatory and process expertise</li>
+<li>Installed equipment and service relationships</li>
+<li>Broad sterilization portfolio</li></ul></div>
+ <div class="field"><p class="kicker">Catalysts</p><ul><li>Recurring service and consumables growth</li>
+<li>Contract sterilization utilization</li>
+<li>Margins holding despite compliance costs</li></ul></div>
+ <div class="field"><p class="kicker">Risks</p><ul><li>Regulatory or quality-compliance disruption</li>
+<li>Procedure slowdown and customer production weakness</li>
+<li>Pricing pressure or capital-equipment cyclicality</li></ul></div>
+ <div class="field"><p class="kicker">Invalidation</p><ul><li>Compliance failures materially impair service capacity</li>
+<li>Recurring activity weakens despite stable customer procedure volumes</li></ul></div>
+ <div class="field"><p class="kicker">Weight rationale</p><p>Five percent adds a less product-specific medical earnings driver. The position is deliberately meaningful despite a lower headline growth profile. T/G/Q/F/P: 90/80/90/60/95.</p></div>
+ <div class="field"><p class="kicker">Valuation</p><p>Not assessed; current service margins, capital requirements, and trading valuation are missing.</p></div>
+ </div>
+</article>
+
+
+<article class="card holding" id="portfolio-EOG">
+ <header class="holding-head">
+ <a class="ticker" href="#portfolio-EOG">EOG</a>
+ <div class="holding-main">
+ <div class="holding-title">
+ <h3>EOG Resources, Inc.</h3>
+ <div class="holding-figures">
+ <span class="figure">5%</span>
+ <span class="figure-label">weight</span>
+ <span class="figure">82</span>
+ <span class="figure-label">score</span>
+ </div>
+ </div>
+ <div class="badges">
+ <span class="badge badge-secondary">Domestic oil and royalty inflation hedge</span>
+ <span class="badge badge-outline">Energy</span>
+ <span class="badge badge-outline">Oil &amp; Gas Exploration &amp; Production</span>
+ </div>
+ </div>
+ </header>
+ <div class="prose"><p>Disciplined production can convert sustained oil realizations into cash over twelve months, providing a partial supply-shock offset rather than a permanent inflation hedge.</p></div>
+ <p class="note">Independent producer of crude oil, natural gas, and NGLs from onshore and selected international assets. The file emphasizes resource quality, efficient development, and disciplined reinvestment; current breakevens and financial strength are not quantified.</p>
+ <p class="note"><span class="tag">Macro</span> Prolonged supply disruption can raise realized oil revenue, subject to hedging, service inflation, and reinvestment.</p>
+ <div class="fields">
+ <div class="field"><p class="kicker">Growth drivers</p><ul><li>Realized commodity prices</li>
+<li>Well productivity and production mix</li>
+<li>Capital and operating efficiency</li></ul></div>
+ <div class="field"><p class="kicker">Competitive advantages</p><ul><li>High-quality drilling inventory</li>
+<li>Technical execution</li>
+<li>Operating scale and capital discipline</li></ul></div>
+ <div class="field"><p class="kicker">Catalysts</p><ul><li>Realized-price and cost disclosures</li>
+<li>Capital budgets demonstrating restrained reinvestment</li>
+<li>Cash generation under normalized-price sensitivity tests</li></ul></div>
+ <div class="field"><p class="kicker">Risks</p><ul><li>Oil-price normalization or demand destruction</li>
+<li>Service inflation and production declines</li>
+<li>Operational or environmental incidents</li></ul></div>
+ <div class="field"><p class="kicker">Invalidation</p><ul><li>Normalized-price economics prove unattractive</li>
+<li>Capital spending absorbs the expected cash benefit</li></ul></div>
+ <div class="field"><p class="kicker">Weight rationale</p><p>Five percent provides direct upstream sensitivity while limiting dependence on elevated oil prices. Low-cost positioning is qualitative, not a verified breakeven. T/G/Q/F/P: 90/78/85/60/95.</p></div>
+ <div class="field"><p class="kicker">Valuation</p><p>Not assessed; require normalized-price cash yields rather than peak-price earnings.</p></div>
+ </div>
+</article>
+
+
+<article class="card holding" id="portfolio-COP">
+ <header class="holding-head">
+ <a class="ticker" href="#portfolio-COP">COP</a>
+ <div class="holding-main">
+ <div class="holding-title">
+ <h3>ConocoPhillips</h3>
+ <div class="holding-figures">
+ <span class="figure">5%</span>
+ <span class="figure-label">weight</span>
+ <span class="figure">80</span>
+ <span class="figure-label">score</span>
+ </div>
+ </div>
+ <div class="badges">
+ <span class="badge badge-secondary">Domestic oil and royalty inflation hedge</span>
+ <span class="badge badge-outline">Energy</span>
+ <span class="badge badge-outline">Oil &amp; Gas Exploration &amp; Production</span>
+ </div>
+ </div>
+ </header>
+ <div class="prose"><p>Upstream cash generation offers supply-shock participation, while geographic and resource diversification reduce reliance on one domestic shale basin.</p></div>
+ <p class="note">Global independent producer with Alaska, Lower 48, Canadian, European, Middle Eastern, North African, and Asia-Pacific assets, including LNG interests. It supplies refiners, utilities, industrial buyers, and commodity markets.</p>
+ <p class="note"><span class="tag">Macro</span> Elevated oil and gas realizations can offset some inflationary pressure elsewhere in the portfolio; international operations introduce additional geopolitical risks.</p>
+ <div class="fields">
+ <div class="field"><p class="kicker">Growth drivers</p><ul><li>Commodity realizations and production mix</li>
+<li>Capital efficiency</li>
+<li>Portfolio optimization and LNG-linked activity</li></ul></div>
+ <div class="field"><p class="kicker">Competitive advantages</p><ul><li>Diversified resource base</li>
+<li>Operating scale</li>
+<li>Technical and capital-allocation capabilities</li></ul></div>
+ <div class="field"><p class="kicker">Catalysts</p><ul><li>Production and cost execution</li>
+<li>Capital-budget discipline</li>
+<li>Cash conversion from existing producing assets</li></ul></div>
+ <div class="field"><p class="kicker">Risks</p><ul><li>Commodity-price reversal</li>
+<li>Large-project execution and cost inflation</li>
+<li>Geopolitical, regulatory, or operating disruptions</li></ul></div>
+ <div class="field"><p class="kicker">Invalidation</p><ul><li>Projects or reinvestment undermine normalized cash economics</li>
+<li>Supply normalization removes the hedge rationale without compensating valuation support</li></ul></div>
+ <div class="field"><p class="kicker">Weight rationale</p><p>Five percent complements EOG with geographic and LNG exposure, but remains fully counted in the same commodity-risk sleeve. T/G/Q/F/P: 86/76/85/60/90.</p></div>
+ <div class="field"><p class="kicker">Valuation</p><p>Not assessed; domestic revenue share, normalized cash yield, and current leverage require verification.</p></div>
+ </div>
+</article>
+
+
+<article class="card holding" id="portfolio-CRM">
+ <header class="holding-head">
+ <a class="ticker" href="#portfolio-CRM">CRM</a>
+ <div class="holding-main">
+ <div class="holding-title">
+ <h3>Salesforce, Inc.</h3>
+ <div class="holding-figures">
+ <span class="figure">5%</span>
+ <span class="figure-label">weight</span>
+ <span class="figure">80</span>
+ <span class="figure-label">score</span>
+ </div>
+ </div>
+ <div class="badges">
+ <span class="badge badge-secondary">Enterprise AI monetization</span>
+ <span class="badge badge-outline">Information Technology</span>
+ <span class="badge badge-outline">Application Software</span>
+ </div>
+ </div>
+ </header>
+ <div class="prose"><p>Renewals, cross-selling, data integration, and paid workflow automation can translate existing customer relationships into earnings; the thesis requires evidence rather than adoption announcements.</p></div>
+ <p class="note">Provides cloud CRM and enterprise applications across sales, service, marketing, commerce, collaboration, analytics, integration, and AI-enabled workflows, including Agentforce. The file supports installed-base distribution but does not quantify paid AI returns.</p>
+ <p class="note"><span class="tag">Macro</span> Businesses seeking sales and service efficiency may fund embedded software even when household demand and hiring soften.</p>
+ <div class="fields">
+ <div class="field"><p class="kicker">Growth drivers</p><ul><li>Installed-account expansion</li>
+<li>Data and integration adoption</li>
+<li>Paid AI-enabled service and sales workflows</li></ul></div>
+ <div class="field"><p class="kicker">Competitive advantages</p><ul><li>Large CRM installed base</li>
+<li>Broad integrated suite</li>
+<li>Workflow switching costs</li></ul></div>
+ <div class="field"><p class="kicker">Catalysts</p><ul><li>Paid AI usage and renewal evidence</li>
+<li>Cross-sell execution</li>
+<li>Cash and margin improvement without weakening retention</li></ul></div>
+ <div class="field"><p class="kicker">Risks</p><ul><li>AI disrupts seat-based monetization</li>
+<li>Competitive bundling and pricing pressure</li>
+<li>Integration problems or enterprise budget cuts</li></ul></div>
+ <div class="field"><p class="kicker">Invalidation</p><ul><li>Automation revenue fails to replace displaced subscription economics</li>
+<li>Retention and account expansion deteriorate persistently</li></ul></div>
+ <div class="field"><p class="kicker">Weight rationale</p><p>Five percent adds customer-facing workflows to Microsoft&#x27;s infrastructure/productivity and ServiceNow&#x27;s operational workflows. Shared enterprise budgets remain a concentration. T/G/Q/F/P: 85/78/88/65/80.</p></div>
+ <div class="field"><p class="kicker">Valuation</p><p>Not assessed; no assumption of a valuation discount or buyback-supported return.</p></div>
+ </div>
+</article>
+
+
+<article class="card holding" id="portfolio-RTX">
+ <header class="holding-head">
+ <a class="ticker" href="#portfolio-RTX">RTX</a>
+ <div class="holding-main">
+ <div class="holding-title">
+ <h3>RTX Corporation</h3>
+ <div class="holding-figures">
+ <span class="figure">5%</span>
+ <span class="figure-label">weight</span>
+ <span class="figure">80</span>
+ <span class="figure-label">score</span>
+ </div>
+ </div>
+ <div class="badges">
+ <span class="badge badge-secondary">Missile-defense production</span>
+ <span class="badge badge-outline">Industrials</span>
+ <span class="badge badge-outline">Aerospace &amp; Defense</span>
+ </div>
+ </div>
+ </header>
+ <div class="prose"><p>Air-defense production and recurring aerospace aftermarket activity offer complementary twelve-month earnings channels, subject to program and warranty execution.</p></div>
+ <p class="note">Operates Collins Aerospace, Pratt &amp; Whitney, and Raytheon, supplying aircraft systems, engines, aftermarket services, sensors, missiles, and integrated air defense. Both commercial aviation and government customers are material business exposures.</p>
+ <p class="note"><span class="tag">Macro</span> Defense procurement supports revenue independently of consumers, while installed-engine maintenance adds a separate utilization driver.</p>
+ <div class="fields">
+ <div class="field"><p class="kicker">Growth drivers</p><ul><li>Raytheon missile and sensor deliveries</li>
+<li>Engine and aerospace aftermarket demand</li>
+<li>Manufacturing throughput</li></ul></div>
+ <div class="field"><p class="kicker">Competitive advantages</p><ul><li>Large aerospace installed base</li>
+<li>Engineering and intellectual property</li>
+<li>Long-duration defense relationships</li></ul></div>
+ <div class="field"><p class="kicker">Catalysts</p><ul><li>Air-defense production milestones</li>
+<li>Aftermarket service conversion</li>
+<li>Evidence of controlled warranty and program costs</li></ul></div>
+ <div class="field"><p class="kicker">Risks</p><ul><li>Engine warranty and program liabilities</li>
+<li>Supply-chain and labor constraints</li>
+<li>Defense funding delays or commercial aviation weakness</li></ul></div>
+ <div class="field"><p class="kicker">Invalidation</p><ul><li>Program or warranty costs overwhelm operating growth</li>
+<li>Defense deliveries repeatedly miss executable production schedules</li></ul></div>
+ <div class="field"><p class="kicker">Weight rationale</p><p>Five percent recognizes missile exposure plus aftermarket diversification, with a discount for commercial cyclicality and unverified liabilities. T/G/Q/F/P: 88/80/88/55/85.</p></div>
+ <div class="field"><p class="kicker">Valuation</p><p>Not assessed; current liabilities and normalized earnings require verification before valuation.</p></div>
+ </div>
+</article>
+
+
+<article class="card holding" id="portfolio-SAP">
+ <header class="holding-head">
+ <a class="ticker" href="#portfolio-SAP">SAP</a>
+ <div class="holding-main">
+ <div class="holding-title">
+ <h3>SAP SE Sponsored ADR</h3>
+ <div class="holding-figures">
+ <span class="figure">4%</span>
+ <span class="figure-label">weight</span>
+ <span class="figure">83</span>
+ <span class="figure-label">score</span>
+ </div>
+ </div>
+ <div class="badges">
+ <span class="badge badge-secondary">Enterprise AI monetization</span>
+ <span class="badge badge-outline">Information Technology</span>
+ <span class="badge badge-outline">Application Software</span>
+ </div>
+ </div>
+ </header>
+ <div class="prose"><p>ERP modernization and cloud renewals supply an earnings foundation independent of unverified AI uplift; paid AI functionality is incremental upside requiring confirmation.</p></div>
+ <p class="note">Provides cloud and on-premises ERP, finance, supply-chain, procurement, HCM, analytics, platform services, and enterprise AI tools. Large and midsized customers operate across global industries. The file identifies SAP as a sponsored ADR.</p>
+ <p class="note"><span class="tag">Macro</span> Mission-critical enterprise modernization and productivity needs can support demand despite softer consumption.</p>
+ <div class="fields">
+ <div class="field"><p class="kicker">Growth drivers</p><ul><li>ERP cloud migration</li>
+<li>Subscription renewals and expansion</li>
+<li>Cross-selling and paid AI-enabled applications</li></ul></div>
+ <div class="field"><p class="kicker">Competitive advantages</p><ul><li>Deep business-process integration</li>
+<li>High switching costs</li>
+<li>Global implementation ecosystem</li></ul></div>
+ <div class="field"><p class="kicker">Catalysts</p><ul><li>Cloud migration milestones</li>
+<li>Renewal and implementation execution</li>
+<li>Evidence of economically paid AI adoption</li></ul></div>
+ <div class="field"><p class="kicker">Risks</p><ul><li>Migration and implementation failures</li>
+<li>Enterprise spending deferrals and competition</li>
+<li>Currency, international demand, and ADR-related exposure</li></ul></div>
+ <div class="field"><p class="kicker">Invalidation</p><ul><li>Cloud transitions weaken retention or economics</li>
+<li>Implementation delays prevent revenue conversion within the horizon</li></ul></div>
+ <div class="field"><p class="kicker">Weight rationale</p><p>Four percent adds core operational workflows and geographic diversification, but international exposure and incomplete AI economics limit sizing. T/G/Q/F/P: 85/82/92/65/85.</p></div>
+ <div class="field"><p class="kicker">Valuation</p><p>Not assessed; ADR valuation and currency-adjusted earnings require verification.</p></div>
+ </div>
+</article>
+
+
+<article class="card holding" id="portfolio-LHX">
+ <header class="holding-head">
+ <a class="ticker" href="#portfolio-LHX">LHX</a>
+ <div class="holding-main">
+ <div class="holding-title">
+ <h3>L3Harris Technologies, Inc.</h3>
+ <div class="holding-figures">
+ <span class="figure">4%</span>
+ <span class="figure-label">weight</span>
+ <span class="figure">81</span>
+ <span class="figure-label">score</span>
+ </div>
+ </div>
+ <div class="badges">
+ <span class="badge badge-secondary">Missile-defense production</span>
+ <span class="badge badge-outline">Industrials</span>
+ <span class="badge badge-outline">Aerospace &amp; Defense</span>
+ </div>
+ </div>
+ </header>
+ <div class="prose"><p>Propulsion and mission-system deliveries offer supplier-level participation in defense production rather than merely adding another broad platform prime.</p></div>
+ <p class="note">Supplies secure communications, sensors, space and mission systems, electronic warfare, and propulsion. The retrieved description includes Aerojet Rocketdyne propulsion and armament systems alongside communications and mission-system businesses.</p>
+ <p class="note"><span class="tag">Macro</span> Missile replenishment and warning-system procurement can support production independently of private consumption.</p>
+ <div class="fields">
+ <div class="field"><p class="kicker">Growth drivers</p><ul><li>Propulsion production and deliveries</li>
+<li>Missile-warning and sensor demand</li>
+<li>Secure communications procurement</li></ul></div>
+ <div class="field"><p class="kicker">Competitive advantages</p><ul><li>Certification barriers</li>
+<li>Mission-critical qualified content</li>
+<li>Long-standing government relationships</li></ul></div>
+ <div class="field"><p class="kicker">Catalysts</p><ul><li>Qualified production-capacity milestones</li>
+<li>Funded order conversion</li>
+<li>Throughput and contract-margin improvement</li></ul></div>
+ <div class="field"><p class="kicker">Risks</p><ul><li>Government funding and award timing</li>
+<li>Fixed-price margin pressure and supplier shortages</li>
+<li>Portfolio changes or execution problems alter propulsion exposure</li></ul></div>
+ <div class="field"><p class="kicker">Invalidation</p><ul><li>Production ramps repeatedly fail to generate cash</li>
+<li>Corporate actions materially remove the exposure supporting the thesis</li></ul></div>
+ <div class="field"><p class="kicker">Weight rationale</p><p>Four percent adds propulsion and electronics, but shares government customers and production chains with LMT and RTX. Current segment ownership and financial commitments require confirmation. T/G/Q/F/P: 92/84/86/55/80.</p></div>
+ <div class="field"><p class="kicker">Valuation</p><p>Not assessed; current leverage, portfolio structure, and normalized earnings are not verified.</p></div>
+ </div>
+</article>
+
+
+<article class="card holding" id="portfolio-TPL">
+ <header class="holding-head">
+ <a class="ticker" href="#portfolio-TPL">TPL</a>
+ <div class="holding-main">
+ <div class="holding-title">
+ <h3>Texas Pacific Land Corporation</h3>
+ <div class="holding-figures">
+ <span class="figure">3%</span>
+ <span class="figure-label">weight</span>
+ <span class="figure">81</span>
+ <span class="figure-label">score</span>
+ </div>
+ </div>
+ <div class="badges">
+ <span class="badge badge-secondary">Domestic oil and royalty inflation hedge</span>
+ <span class="badge badge-outline">Energy</span>
+ <span class="badge badge-outline">Oil &amp; Gas Exploration &amp; Production</span>
+ </div>
+ </div>
+ </header>
+ <div class="prose"><p>Royalty participation offers oil-linked earnings with low sustaining capital requirements, while water and surface services add activity-linked income.</p></div>
+ <p class="note">Owns Permian Basin royalty and surface rights, earning oil and gas royalties, water-related revenues, easements, surface-use income, and land sales. It is a land and royalty owner rather than an operating producer.</p>
+ <p class="note"><span class="tag">Macro</span> Higher realized commodity prices and domestic production activity can support royalties, but operator drilling decisions determine volumes.</p>
+ <div class="fields">
+ <div class="field"><p class="kicker">Growth drivers</p><ul><li>Royalty production and realizations</li>
+<li>Water sourcing and produced-water activity</li>
+<li>Infrastructure easements and surface use</li></ul></div>
+ <div class="field"><p class="kicker">Competitive advantages</p><ul><li>Strategic royalty and surface acreage</li>
+<li>Low sustaining capital intensity</li>
+<li>Multiple land-monetization channels</li></ul></div>
+ <div class="field"><p class="kicker">Catalysts</p><ul><li>Royalty-volume and realization updates</li>
+<li>Water and easement activity</li>
+<li>Cash generation excluding volatile land sales</li></ul></div>
+ <div class="field"><p class="kicker">Risks</p><ul><li>Permian and operator concentration</li>
+<li>Commodity-price and drilling downturn</li>
+<li>Water execution, environmental rules, or valuation compression</li></ul></div>
+ <div class="field"><p class="kicker">Invalidation</p><ul><li>Operator activity materially reduces royalty economics</li>
+<li>Water investment or other spending undermines the low-capital-intensity thesis</li></ul></div>
+ <div class="field"><p class="kicker">Weight rationale</p><p>Three percent diversifies the energy sleeve&#x27;s operating model, not its commodity factor. Basin concentration and unverified valuation keep the position small. T/G/Q/F/P: 85/75/90/65/85.</p></div>
+ <div class="field"><p class="kicker">Valuation</p><p>Not assessed; low capital intensity must not be confused with an attractive share price.</p></div>
+ </div>
+</article>
+
+
+<article class="card holding" id="portfolio-GEV">
+ <header class="holding-head">
+ <a class="ticker" href="#portfolio-GEV">GEV</a>
+ <div class="holding-main">
+ <div class="holding-title">
+ <h3>GE Vernova Inc.</h3>
+ <div class="holding-figures">
+ <span class="figure">3%</span>
+ <span class="figure-label">weight</span>
+ <span class="figure">79</span>
+ <span class="figure-label">score</span>
+ </div>
+ </div>
+ <div class="badges">
+ <span class="badge badge-secondary">Electrical infrastructure conversion</span>
+ <span class="badge badge-outline">Industrials</span>
+ <span class="badge badge-outline">Electrical Equipment</span>
+ </div>
+ </div>
+ </header>
+ <div class="prose"><p>Grid shipments and installed-base services provide a twelve-month earnings opportunity; long-cycle generation orders are not assumed to become immediate revenue.</p></div>
+ <p class="note">Supplies generation and grid equipment, software, and services through Power, Wind, and Electrification. Customers include utilities, grid operators, industrial users, and independent power producers. Its installed fleet supports aftermarket services.</p>
+ <p class="note"><span class="tag">Macro</span> Grid modernization and electricity reliability needs provide second-order exposure to investment growth beyond data-center equipment.</p>
+ <div class="fields">
+ <div class="field"><p class="kicker">Growth drivers</p><ul><li>Electrification project conversion</li>
+<li>Installed-fleet service activity</li>
+<li>Power-equipment throughput and mix</li></ul></div>
+ <div class="field"><p class="kicker">Competitive advantages</p><ul><li>Large installed fleet</li>
+<li>Field-service network</li>
+<li>Critical power-system engineering</li></ul></div>
+ <div class="field"><p class="kicker">Catalysts</p><ul><li>Grid delivery milestones</li>
+<li>Service activity and margin updates</li>
+<li>Evidence that wind and project losses remain contained</li></ul></div>
+ <div class="field"><p class="kicker">Risks</p><ul><li>Wind-margin and large-project volatility</li>
+<li>Supply-chain and execution constraints</li>
+<li>Utility spending delays and policy changes</li></ul></div>
+ <div class="field"><p class="kicker">Invalidation</p><ul><li>Project losses offset grid and service improvement</li>
+<li>Orders lack credible delivery or cash-conversion schedules</li></ul></div>
+ <div class="field"><p class="kicker">Weight rationale</p><p>Three percent adds generation-service and grid exposure but contains heterogeneous segment economics and project risk. T/G/Q/F/P: 86/85/85/55/75.</p></div>
+ <div class="field"><p class="kicker">Valuation</p><p>Not assessed; segment-normalized earnings and current expectations are unavailable.</p></div>
+ </div>
+</article>
+
+
+<article class="card holding" id="portfolio-NVT">
+ <header class="holding-head">
+ <a class="ticker" href="#portfolio-NVT">NVT</a>
+ <div class="holding-main">
+ <div class="holding-title">
+ <h3>nVent Electric plc</h3>
+ <div class="holding-figures">
+ <span class="figure">3%</span>
+ <span class="figure-label">weight</span>
+ <span class="figure">79</span>
+ <span class="figure-label">score</span>
+ </div>
+ </div>
+ <div class="badges">
+ <span class="badge badge-secondary">Electrical infrastructure conversion</span>
+ <span class="badge badge-outline">Industrials</span>
+ <span class="badge badge-outline">Electrical Equipment</span>
+ </div>
+ </div>
+ </header>
+ <div class="prose"><p>Protection and connection content can benefit from infrastructure deployments and retrofits, but the case requires current portfolio and order-conversion verification.</p></div>
+ <p class="note">Provides electrical enclosures, connections, cable management, protection, and cooling for industrial, utility, infrastructure, and data-center customers. The file&#x27;s segment coverage is partial and identifies portfolio-shift execution risk.</p>
+ <p class="note"><span class="tag">Macro</span> Electrification and grid investment increase demand for reliable electrical protection and connections.</p>
+ <div class="fields">
+ <div class="field"><p class="kicker">Growth drivers</p><ul><li>Infrastructure and data-center shipments</li>
+<li>Utility and industrial retrofits</li>
+<li>Pricing and product mix</li></ul></div>
+ <div class="field"><p class="kicker">Competitive advantages</p><ul><li>Application-specific engineering</li>
+<li>Recognized brands and installed base</li>
+<li>Distribution reach</li></ul></div>
+ <div class="field"><p class="kicker">Catalysts</p><ul><li>Project shipments and commissioning</li>
+<li>Current segment disclosures</li>
+<li>Margins and cash conversion through portfolio changes</li></ul></div>
+ <div class="field"><p class="kicker">Risks</p><ul><li>Project deferrals and industrial cyclicality</li>
+<li>Pricing or supply-chain pressure</li>
+<li>Portfolio-transition execution and incomplete segment evidence</li></ul></div>
+ <div class="field"><p class="kicker">Invalidation</p><ul><li>Portfolio changes remove material thematic exposure</li>
+<li>Order weakness and poor cash conversion persist together</li></ul></div>
+ <div class="field"><p class="kicker">Weight rationale</p><p>Three percent captures differentiated protection content while discounting evidence gaps and overlap with other electrical holdings. T/G/Q/F/P: 90/85/83/55/65.</p></div>
+ <div class="field"><p class="kicker">Valuation</p><p>Not assessed; requires current portfolio-adjusted financials and valuation.</p></div>
+ </div>
+</article>
+
+
+<article class="card holding" id="portfolio-VRT">
+ <header class="holding-head">
+ <a class="ticker" href="#portfolio-VRT">VRT</a>
+ <div class="holding-main">
+ <div class="holding-title">
+ <h3>Vertiv Holdings Co</h3>
+ <div class="holding-figures">
+ <span class="figure">2%</span>
+ <span class="figure-label">weight</span>
+ <span class="figure">81</span>
+ <span class="figure-label">score</span>
+ </div>
+ </div>
+ <div class="badges">
+ <span class="badge badge-secondary">Electrical infrastructure conversion</span>
+ <span class="badge badge-outline">Industrials</span>
+ <span class="badge badge-outline">Electrical Equipment</span>
+ </div>
+ </div>
+ </header>
+ <div class="prose"><p>Higher-density computing creates power and cooling content opportunities, but twelve-month earnings must come from shipped, funded projects and service rather than proposed capacity.</p></div>
+ <p class="note">Provides data-center power distribution, UPS, thermal management, liquid cooling, racks, monitoring, and field services to cloud, colocation, enterprise, telecom, and industrial customers.</p>
+ <p class="note"><span class="tag">Macro</span> Investment-led cloud and AI spending supports critical power and thermal equipment demand.</p>
+ <div class="fields">
+ <div class="field"><p class="kicker">Growth drivers</p><ul><li>Power-density and cooling requirements</li>
+<li>Cloud and colocation deployments</li>
+<li>Installed-base service attachment</li></ul></div>
+ <div class="field"><p class="kicker">Competitive advantages</p><ul><li>Integrated power and cooling portfolio</li>
+<li>Data-center engineering expertise</li>
+<li>Global service network</li></ul></div>
+ <div class="field"><p class="kicker">Catalysts</p><ul><li>Funded project shipments</li>
+<li>Cooling-product deployment and service attachment</li>
+<li>Cash conversion supporting reported growth</li></ul></div>
+ <div class="field"><p class="kicker">Risks</p><ul><li>AI capital-spending reversal and customer concentration</li>
+<li>Competitive pricing or technology transitions</li>
+<li>Supply-chain and product-launch execution</li></ul></div>
+ <div class="field"><p class="kicker">Invalidation</p><ul><li>Customer cancellations undermine executable demand</li>
+<li>Growth fails to generate cash or sustainable margins</li></ul></div>
+ <div class="field"><p class="kicker">Weight rationale</p><p>Minimum two-percent allocation deliberately limits the portfolio&#x27;s most concentrated data-center infrastructure exposure despite strong thematic alignment. T/G/Q/F/P: 96/92/85/55/50.</p></div>
+ <div class="field"><p class="kicker">Valuation</p><p>Not assessed; exceptional demand may already be capitalized in the share price.</p></div>
+ </div>
+</article>
+</div>
+ </section>
+ <section class="section" id="portfolio-scenarios">
+ <p class="section-label">Scenarios</p>
+ <p class="lede">Analytical scenarios. The file assigns no probabilities or expected returns.</p>
+ <div class="scenarios">
+<article class="card scenario scenario-base">
+ <h3>Base case</h3>
+ <div class="prose"><p>Investment and contracted spending sustain expansion while consumption remains uneven and rates remain restrictive. Relative performance depends on delivery, utilization, and cash conversion rather than multiple expansion.</p></div>
+ <div class="field"><p class="kicker">Beneficiaries</p><ul><li>ETN, HUBB, NVT, GEV: electrical shipments, grid investment, and services</li>
+<li>LMT, RTX, LHX: funded production and sustainment</li>
+<li>ISRG, BSX, SYK, MDT, STE: procedure utilization and associated recurring demand</li>
+<li>MSFT, NOW, CRM, SAP: enterprise renewals, cloud migration, and demonstrably paid automation</li></ul></div>
+ <div class="field"><p class="kicker">Disadvantaged</p><ul><li>VRT if customer timing slips despite otherwise supportive investment</li>
+<li>EOG, COP, TPL if oil normalizes materially from the supplied elevated-price environment</li>
+<li>Any holding whose valuation requires accelerating growth or falling discount rates</li></ul></div>
+ <div class="field"><p class="kicker">Portfolio implications</p><p>The 45% combined medical/defense allocation diversifies the 42% electrical/software sleeve. The 13% energy sleeve offsets some supply inflation but is not expected to lead in every expansion. Monitor earnings-to-cash conversion across all themes; no numerical returns or probabilities are inferred.</p></div>
+</article>
+
+<article class="card scenario scenario-bull">
+ <h3>Bull case</h3>
+ <div class="prose"><p>Energy flows normalize, real incomes improve, disinflation permits easier financial conditions, and productive investment broadens earnings growth.</p></div>
+ <div class="field"><p class="kicker">Beneficiaries</p><ul><li>VRT, NVT, ETN, GEV: continued investment with improved financing conditions</li>
+<li>MSFT, NOW, CRM, SAP: stronger enterprise demand and paid adoption</li>
+<li>ISRG, BSX, SYK: procedure growth and improved hospital purchasing capacity</li>
+<li>RTX: commercial aerospace aftermarket participation</li></ul></div>
+ <div class="field"><p class="kicker">Disadvantaged</p><ul><li>EOG, COP, TPL: lower oil realizations reduce the supply-shock benefit</li>
+<li>LMT, LHX: potentially relative laggards in a de-escalation-led risk-on market</li>
+<li>The portfolio&#x27;s exclusions of consumer recovery and refinancing-sensitive equities</li></ul></div>
+ <div class="field"><p class="kicker">Portfolio implications</p><p>Electrical and software exposures can advance together, while energy may offset some gains. The portfolio may lag a consumer-led or small-cap-led rally because it intentionally avoids dependence on cheaper refinancing and household acceleration.</p></div>
+</article>
+
+<article class="card scenario scenario-bear">
+ <h3>Bear case</h3>
+ <div class="prose"><p>Persistent supply inflation weakens purchasing power, rates remain high or rise, enterprise investment slows, and earnings estimates fall. An AI investment reversal links software and electrical downside.</p></div>
+ <div class="field"><p class="kicker">Beneficiaries</p><ul><li>LMT and LHX: potential relative resilience from funded defense demand, subject to execution</li>
+<li>STE and MDT: potentially relatively resilient recurring clinical demand</li>
+<li>EOG, COP, TPL: conditional initial benefit if the shock remains supply-led</li></ul></div>
+ <div class="field"><p class="kicker">Disadvantaged</p><ul><li>VRT and NVT: project timing and data-center concentration</li>
+<li>ETN and GEV: investment deferrals and manufacturing operating leverage</li>
+<li>MSFT, NOW, CRM, SAP: weaker enterprise budgets and valuation compression</li>
+<li>SYK and ISRG: elective-procedure or hospital-capital deferrals</li>
+<li>EOG, COP, TPL if recession-driven demand destruction overtakes supply disruption</li>
+<li>RTX if commercial aviation weakness compounds program costs</li></ul></div>
+ <div class="field"><p class="kicker">Portfolio implications</p><p>Medical and defense holdings are relative defenses, not absolute drawdown hedges. The full 42% electrical/software sleeve is treated as a potentially correlated downside exposure. Oil protection can disappear during demand destruction, leaving broad equity and discount-rate risk intact.</p></div>
+</article>
+</div>
+ </section>
+ <section class="section" id="portfolio-risks">
+ <p class="section-label">Portfolio risks <span class="count">5</span></p>
+ <div class="stack">
+<article class="card risk">
+ <div class="risk-index">1</div>
+ <div>
+ <h3>Shared investment-cycle reversal</h3>
+ <div class="prose"><p>electrical infrastructure plus enterprise platforms total 42%. Limit direct data-center specialist VRT to 2%, emphasize utility-oriented HUBB and diversified ETN, and review the combined sleeve before adding any exposure. A proposed 45% combined-sleeve ceiling leaves only three percentage points of headroom; this is a risk-control policy, not an estimated AI revenue percentage.</p></div>
+ </div>
+</article>
+
+<article class="card risk">
+ <div class="risk-index">2</div>
+ <div>
+ <h3>Persistent inflation, high rates, and unverified valuations</h3>
+ <div class="prose"><p>no holding has a verified entry valuation, so quality does not establish downside protection. The 13% energy allocation provides only a conditional offset. Execute only after normalized cash-flow valuation, interest coverage, debt maturity, and capital-commitment checks; reduce or replace names if prices fail those tests.</p></div>
+ </div>
+</article>
+
+<article class="card risk">
+ <div class="risk-index">3</div>
+ <div>
+ <h3>Medical demand and regulatory concentration</h3>
+ <div class="prose"><p>Health Care and the medical theme both reach 30%. Diversify among robotics, cardiovascular devices, orthopedics, broad therapies, and sterilization, but recognize shared hospital staffing, reimbursement, recalls, and procedure-deferral risks. STE&#x27;s 5% position reduces reliance on individual device-platform winners.</p></div>
+ </div>
+</article>
+
+<article class="card risk">
+ <div class="risk-index">4</div>
+ <div>
+ <h3>Production, procurement, and working-capital execution</h3>
+ <div class="prose"><p>the 35% industrial allocation combines equipment manufacturing with defense. LMT, RTX, and LHX share government customers and potentially the same production chains. Defense is limited to 15%; smaller GEV, NVT, and VRT positions contain project-specific uncertainty. Backlog is not treated as cash.</p></div>
+ </div>
+</article>
+
+<article class="card risk">
+ <div class="risk-index">5</div>
+ <div>
+ <h3>Oil-hedge failure and residual equity concentration</h3>
+ <div class="prose"><p>EOG, COP, and TPL share commodity-price exposure despite different assets and capital needs. Energy is capped at 13%, with TPL at 3%. Supply normalization or demand destruction can remove protection; all 20 holdings remain long equities, with no cash, options, or guaranteed recession hedge.</p></div>
+ </div>
+</article>
+</div>
+ <p class="section-label">Correlated exposures <span class="count">10</span></p>
+ <div class="stack"><article class="card compact"><h3>Electrical infrastructure</h3><p>20% directly assigned by primary theme. AI/data-center exposure within this sleeve is partial and unquantified; utilities, industrial applications, and services are also present.</p></article><article class="card compact"><h3>Enterprise platforms</h3><p>22% directly assigned. Corporate IT budgets link MSFT, NOW, CRM, and SAP; distinct workflows do not eliminate a common spending factor.</p></article><article class="card compact"><h3>Combined electrical/platform investment exposure</h3><p>42% of portfolio capital, conservatively measured using full position weights. This is not a look-through estimate of AI revenues or a measured statistical correlation.</p></article><article class="card compact"><h3>Government procurement</h3><p>15% in LMT, RTX, and LHX. RTX additionally has commercial aerospace exposure; precise defense revenue shares and funded-backlog percentages were not retrieved.</p></article><article class="card compact"><h3>Clinical utilization and hospital economics</h3><p>30% across ISRG, BSX, SYK, MDT, and STE. STE also serves device manufacturers and life sciences, while capital-equipment exposure remains present in several holdings.</p></article><article class="card compact"><h3>Commodity and domestic-production activity</h3><p>13% in EOG, COP, and TPL. COP is internationally diversified, and TPL is a royalty/surface owner; this is not 13% pure domestic operating production.</p></article><article class="card compact"><h3>Permian overlap</h3><p>TPL&#x27;s 3% is directly basin-concentrated; overlap with other producers cannot be quantified from retrieved geographic revenue or production data.</p></article><article class="card compact"><p>Rates and valuation duration affect all holdings indirectly, particularly software and long-cycle equipment expectations. No factor betas, covariance matrix, or numerical downside offsets were supplied.</p></article><article class="card compact"><p>International demand and currency affect SAP and many global industrial, medical, software, and energy holdings. U.S. listing does not imply exclusively U.S. revenue.</p></article><article class="card compact"><h3>Validation</h3><p>exactly 20 unique tickers; long-only common equities or sponsored ADR; no ETFs or partnership units; weights total 100%; range 2%–8%; largest sector 35%; largest primary theme 30%. All selected businesses have retrieved company-file evidence.</p></article></div>
+ </section>
+ <section class="section" id="portfolio-rejected">
+ <p class="section-label">Rejected candidates <span class="count">10</span></p>
+ <div class="grid-2">
+<article class="card compact">
+ <div class="rejected-head">
+ <span class="ticker">ORCL</span>
+ 
+ </div>
+ <h3>Oracle Corporation</h3>
+ <p>Provisional score 76. Mission-critical databases and cloud provide credible alignment, but capacity expansion and large-deal concentration add to existing infrastructure risk; current capital commitments are unverified.</p>
+</article>
+
+<article class="card compact">
+ <div class="rejected-head">
+ <span class="ticker">NOC</span>
+ 
+ </div>
+ <h3>Northrop Grumman Corporation</h3>
+ <p>Provisional score 78. Credible missile, mission-system, and space exposure, but another large prime would increase government-program concentration without sufficiently differentiated retrieved production economics.</p>
+</article>
+
+<article class="card compact">
+ <div class="rejected-head">
+ <span class="ticker">GD</span>
+ 
+ </div>
+ <h3>General Dynamics Corporation</h3>
+ <p>Provisional score 75. Naval, land-system, and government-service franchises are credible, but less direct interceptor exposure and business-aviation cyclicality reduce fit within the 35% industrial ceiling.</p>
+</article>
+
+<article class="card compact">
+ <div class="rejected-head">
+ <span class="ticker">BWXT</span>
+ 
+ </div>
+ <h3>BWX Technologies, Inc.</h3>
+ <p>Provisional score 78. Specialized nuclear manufacturing and naval relationships are attractive adjacent exposures, but not the targeted near-term missile-production mechanism; would add government-customer overlap.</p>
+</article>
+
+<article class="card compact">
+ <div class="rejected-head">
+ <span class="ticker">POWL</span>
+ 
+ </div>
+ <h3>Powell Industries, Inc.</h3>
+ <p>Provisional score 76. Direct engineered switchgear exposure, but project timing, customer concentration, and energy-capex sensitivity overlap with both selected industrial and oil holdings.</p>
+</article>
+
+<article class="card compact">
+ <div class="rejected-head">
+ <span class="ticker">ATKR</span>
+ 
+ </div>
+ <h3>Atkore Inc.</h3>
+ <p>Provisional score 71. Electrical conduit and cable-management exposure is relevant, but construction cyclicality, input-price sensitivity, and distributor concentration are less complementary than the selected utility and service franchises.</p>
+</article>
+
+<article class="card compact">
+ <div class="rejected-head">
+ <span class="ticker">EW</span>
+ 
+ </div>
+ <h3>Edwards Lifesciences Corporation</h3>
+ <p>Provisional score 77. Strong structural-heart alignment, but product concentration overlaps selected cardiovascular exposure. The file&#x27;s critical-care and segment descriptions require current portfolio confirmation, reducing evidence confidence.</p>
+</article>
+
+<article class="card compact">
+ <div class="rejected-head">
+ <span class="ticker">ZBH</span>
+ 
+ </div>
+ <h3>Zimmer Biomet Holdings, Inc.</h3>
+ <p>Provisional score 74. Credible joint-replacement and robotics exposure, but duplicates Stryker&#x27;s orthopedic utilization and surgeon-channel risks; valuation evidence is unavailable to justify substitution.</p>
+</article>
+
+<article class="card compact">
+ <div class="rejected-head">
+ <span class="ticker">FANG</span>
+ 
+ </div>
+ <h3>Diamondback Energy, Inc.</h3>
+ <p>Provisional score 79. Strong direct oil alignment, but a concentrated Permian operating position would compound TPL&#x27;s basin exposure. EOG and COP provide a more complementary operating mix.</p>
+</article>
+
+<article class="card compact">
+ <div class="rejected-head">
+ <span class="ticker">XOM</span>
+ 
+ </div>
+ <h3>Exxon Mobil Corporation</h3>
+ <p>Provisional score 80. Integrated scale is attractive, but refining and chemical cyclicality dilute the targeted upstream supply-shock mechanism; the limited energy budget favors two upstream operators and a low-capital royalty model.</p>
+</article>
+</div>
+ </section>
+ <section class="section" id="portfolio-gaps">
+ <p class="section-label">Missing information <span class="count">13</span></p>
+ <div class="stack">
+<article class="card compact">
+ <h3>Valuation</h3>
+ <p>all 20 holdings lack verified October 30, 2026 prices, market capitalizations, enterprise values, forward earnings, normalized free-cash-flow yields, and peer-relative multiples. The supplied index P/E cannot substitute for security-level valuation. Construction is complete, but execution remains conditional.</p>
+</article>
+
+<article class="card compact">
+ <h3>Scoring method</h3>
+ <p>T/G/Q/F/P denote theme alignment, earnings growth, business quality, financial resilience, and portfolio contribution, each judged on a 0–100 scale. Score = round((25T + 20G + 20Q + 15F + 10P) / 90). Valuation&#x27;s original 10% is excluded and other factors reweighted proportionally. Scores are ordinal research judgments, not statistical return forecasts.</p>
+</article>
+
+<article class="card compact">
+ <h3>Evidence versus assumptions</h3>
+ <p>business products, customers, segments, and stated competitive positions come from cited files. Growth conversion, catalysts, weights, and invalidation tests are analytical judgments. Financial-resilience scores of 55–70 are conservative placeholders reflecting business-model durability and evidence gaps, not verified leverage or liquidity measurements.</p>
+</article>
+
+<article class="card compact">
+ <h3>Forty-company research universe, eight per theme</h3>
+ <p>electrical—ETN, HUBB, NVT, GEV, VRT, POWL, ATKR, TT; defense and adjacent qualified suppliers—LMT, RTX, LHX, NOC, GD, BWXT, WWD, CR; medical—ISRG, BSX, SYK, MDT, STE, EW, ZBH, BAX; enterprise platforms—MSFT, NOW, CRM, SAP, ORCL, ADBE, OTEX, TDC; oil and royalty—EOG, COP, TPL, FANG, XOM, CVX, OXY, DVN. Adjacent defense candidates were not assumed to possess material interceptor revenue.</p>
+</article>
+
+<article class="card compact">
+ <h3>Additional preliminary screening scores for the ten universe names not selected or listed among the ten principal rejections</h3>
+ <p>TT 77, WWD 74, CR 74, BAX 65, ADBE 72, OTEX 66, TDC 64, CVX 78, OXY 72, DVN 75. These low-confidence qualitative screens use the same valuation-excluded framework; they are not fully diligenced financial models.</p>
+</article>
+
+<article class="card compact">
+ <h3>Additional universe evidence</h3>
+ <p>TT climate equipment and services —; WWD qualified controls and aftermarket —; CR engineered aerospace/industrial components —; BAX hospital products —; ADBE creative workflows and AI disruption risks —; OTEX information-management workflows —; TDC analytics and hybrid data services —; CVX integrated energy —; OXY upstream/chemical exposure —; DVN domestic upstream —.</p>
+</article>
+
+<article class="card compact">
+ <h3>Description freshness</h3>
+ <p>files mix 2024–2026 references and generally lack a verified compilation date. Segment labels are descriptive and not independently reconciled to current filings. NVT has partial segment coverage; SAP and EOG lack confirmed segment detail; EOG has blank customer/end-market fields. EW&#x27;s portfolio and segment descriptions require reconciliation and were not used to fill a selected position.</p>
+</article>
+
+<article class="card compact">
+ <h3>Current corporate structures and eligibility</h3>
+ <p>confirm exchange listings, ADR terms, outstanding share classes, corporate actions, and current GICS classifications as of the requested date. In particular, verify LHX&#x27;s propulsion ownership and segment structure, NVT&#x27;s portfolio changes, and MDT&#x27;s current therapeutic portfolio before execution.</p>
+</article>
+
+<article class="card compact">
+ <h3>Financial diligence required for every holding</h3>
+ <p>current cash and debt, maturities, covenants, interest coverage, cash taxes, stock-based compensation, dilution, capital expenditures, finance leases, pension obligations, and acquisition commitments were not independently verified.</p>
+</article>
+
+<article class="card compact">
+ <h3>Theme-specific gaps</h3>
+ <p>no consistent company-level funded-backlog data, order cancellation rates, AI revenue attribution, paid adoption economics, procedure revenue shares, customer concentration percentages, domestic oil production shares, commodity hedge books, or normalized oil breakevens were retrieved.</p>
+</article>
+
+<article class="card compact">
+ <h3>Priority additional diligence</h3>
+ <p>MSFT capital and lease returns; NOW/CRM/SAP paid AI economics and retention; ISRG legal exposure; RTX warranty/program costs; LMT/LHX production cash conversion; NVT current portfolio; GEV wind/project liabilities; EOG/COP normalized-price cash flow; TPL valuation and operator concentration.</p>
+</article>
+
+<article class="card compact">
+ <h3>Market inputs</h3>
+ <p>the macroeconomic releases, future-dated company financial disclosures, and October 2026 market observations in the user-supplied analysis were accepted as supplied scenario assumptions, not independently authenticated. No October 30 market-close verification, expected returns, scenario probabilities, or numerical correlation estimates are claimed.</p>
+</article>
+
+<article class="card compact">
+ <h3>No company was selected solely because it appeared in the market analysis</h3>
+ <p>each selected business has independently retrieved company-description support. The strongest coverage is business-model identification; current valuation and financial resilience remain the principal limits on investment readiness.</p>
+</article>
+</div>
+ </section>
+ </main>
+  <script>
+
+    const tabs = [...document.querySelectorAll(".view-tab")];
+    const panels = [...document.querySelectorAll("main[data-view]")];
+    const navs = [...document.querySelectorAll("nav[data-view-nav]")];
+
+    function show(view) {
+      tabs.forEach((tab) => {
+        const on = tab.dataset.view === view;
+        tab.classList.toggle("active", on);
+        tab.setAttribute("aria-selected", on ? "true" : "false");
+      });
+      panels.forEach((panel) => {
+        panel.hidden = panel.dataset.view !== view;
+      });
+      navs.forEach((nav) => {
+        nav.hidden = nav.dataset.viewNav !== view;
+      });
+      if (location.hash !== "#" + view) {
+        history.replaceState(null, "", "#" + view);
+      }
+      window.scrollTo(0, 0);
+    }
+
+    tabs.forEach((tab) => {
+      tab.addEventListener("click", () => show(tab.dataset.view));
+    });
+
+    navs.forEach((nav) => {
+      const links = [...nav.querySelectorAll("a")];
+      const sections = links
+        .map((link) => document.querySelector(link.getAttribute("href")))
+        .filter(Boolean);
+      const observer = new IntersectionObserver((entries) => {
+        if (nav.hidden) return;
+        const visible = entries
+          .filter((entry) => entry.isIntersecting)
+          .sort((a, b) => b.intersectionRatio - a.intersectionRatio)[0];
+        if (!visible) return;
+        links.forEach((link) => {
+          link.classList.toggle("active", link.getAttribute("href") === "#" + visible.target.id);
+        });
+      }, { rootMargin: "-20% 0px -60% 0px", threshold: [0.1, 0.4] });
+      sections.forEach((section) => observer.observe(section));
+    });
+
+    const initial = location.hash === "#portfolio" ? "portfolio" : "market";
+    show(initial);
+
+  </script>
+</body>
+</html>
